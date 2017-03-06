@@ -9,6 +9,33 @@
   </head>
 
   <body>
+    <header id="header" class="c-navbar">
+      <section class="c-navbar__header">InstagramClone</section>
+      <form class="c-navbar__nav">
+        <input type="search">
+      </form>
+      <ul class="c-navbar__nav right o-list-inline">
+        <li class="o-list-inline__item"><a href="#">Explore</a></li>
+        <li class="o-list-inline__item"><a href="#">Activities</a></li>
+        <li class="o-list-inline__item"><a href="#">User</a></li>
+      </ul>
+    </header>
     <%= yield %>
+    <footer id="footer">
+      <ul class="o-list-inline">
+        <li class="o-list-inline__item">
+          <a href="#">About</a>
+        </li>
+        <li class="o-list-inline__item">
+          <a href="#">API</a>
+        </li>
+        <li class="o-list-inline__item">
+          <a href="#">Jobs</a>
+        </li>
+        <li class="o-list-inline__item">
+          <a href="#">Lauguages</a>
+        </li>
+      </ul>
+    </footer>
   </body>
 </html>
