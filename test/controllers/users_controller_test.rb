@@ -84,4 +84,29 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to users_url
   end
+
+  test "should activate user" do
+    user = users(:ifournight)
+    help_create_activation_digest(user)
+
+    assert_not user.activated?
+
+    get activate_user_url(user, activation_token: user.activation_token)
+
+    assert user.reload.activated?
+    assert_redirected_to user
+  end
+
+  test "should fail to activae user with wrong token" do
+    user = users(:ifournight)
+    help_create_activation_digest(user)
+    user.save
+
+    assert_not user.activated?
+
+    get activate_user_url(user, activation_token: 'wrong token')
+
+    assert_not user.reload.activated?
+    assert_redirected_to users_url
+  end
 end

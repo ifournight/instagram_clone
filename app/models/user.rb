@@ -34,9 +34,7 @@ class User < ApplicationRecord
   end
 
   def activate
-    self.activated = true
-    self.activated_at = Time.zone.now
-    self.save!
+    update_columns(activated: true, activated_at: Time.zone.now)
   end
 
   # Generalized autheticate method:
@@ -48,7 +46,6 @@ class User < ApplicationRecord
   def authenticate(key, token)
     digest_key = send("#{key.to_s.downcase}_digest")
     return false if digest_key.nil?
-
     BCrypt::Password.new(digest_key).is_password?(token)
   end
 

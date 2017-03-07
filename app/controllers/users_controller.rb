@@ -71,7 +71,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     activation_token = params[:activation_token]
     if @user.authenticate(:activation, activation_token)
-      debugger
       @user.activate
       flash[:success] = "#{@user.name}, 你的邮箱已验证成功！"
       redirect_to @user

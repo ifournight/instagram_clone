@@ -21,4 +21,9 @@ class ActiveSupport::TestCase
     end
     activation_token
   end
+
+  def help_create_activation_digest(user)
+    user.activation_token  = User.new_token
+    user.update_columns(activation_digest: User.digest(user.activation_token))
+  end
 end
