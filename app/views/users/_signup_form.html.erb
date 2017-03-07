@@ -1,0 +1,35 @@
+<%= form_for( user ) do |f| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(user.errors.count, "error") %> 导致了注册失败:</h2>
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li>
+            <%= message %>
+          </li>
+          <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.text_field :email, placeholder: '邮箱' %>
+  </div>
+  
+  <div class="field">
+    <%= f.text_field :name, placeholder: '账号' %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password, placeholder: '密码' %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password_confirmation, placeholder: '密码确认' %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

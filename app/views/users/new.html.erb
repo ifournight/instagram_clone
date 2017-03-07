@@ -1,5 +1,12 @@
-<h1>New User</h1>
-
-<%= render 'form', user: @user %>
-
-<%= link_to 'Back', users_path %>
+<div class="o-wrapper">
+  <h2>Instagram</h2>
+  <p>注册 Instagram, 分享精彩视界</p>
+  <%= render 'signup_form', user: @user %>
+  <p><small>注册即表示你同意我们 条款 和隐私权政策</small></p>
+</div>
+<div class="o-wrapper">
+  <p>
+    有账户了？
+    <%= link_to  "请登录", login_url %>
+  </p>
+</div>

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+  # HOOKS
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+
+  # MACROS
+  layout :resolve_layout
 
   # GET /users
   # GET /users.json
@@ -28,6 +32,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        UserMailer.user_activate(@user, @user.activation_token).deliver_later
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -61,6 +66,21 @@ class UsersController < ApplicationController
     end
   end
 
+  # POST /users/1/activate
+  def activate
+    @user = User.find(params[:id])
+    activation_token = params[:activation_token]
+    if @user.authenticate(:activation, activation_token)
+      debugger
+      @user.activate
+      flash[:success] = "#{@user.name}, 你的邮箱已验证成功！"
+      redirect_to @user
+    else
+      flash[:danger] = "抱歉，认证邮箱的链接无效。"
+      redirect_to users_url, notice: "抱歉，认证邮箱的链接无效。"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -70,5 +90,14 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :website, :intro, :password, :password_confirmation)
+    end
+
+    def resolve_layout
+      case action_name
+      when "new"
+        "signup"
+      else
+        "application"
+      end
     end
 end
