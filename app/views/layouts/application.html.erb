@@ -17,7 +17,9 @@
       <ul class="c-navbar__nav right o-list-inline">
         <li class="o-list-inline__item"><a href="#">Explore</a></li>
         <li class="o-list-inline__item"><a href="#">Activities</a></li>
-        <li class="o-list-inline__item"><a href="#">User</a></li>
+        <% if user_signed_in? %>
+          <li class="o-list-inline__item"> <%= link_to  "Sign_out", destroy_user_session_path, method: :delete %>  </li>
+        <% end %>
       </ul>
     </header>
     <p class="notice">
