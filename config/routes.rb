@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
-  # Custom
-  get    'signup', to: 'users#new'
-  post   'signup', to: 'users#create'
-  get    'login',  to: 'sessions#new'
-  post   'login',  to: 'sessions#create'
-  delete 'logout', to: 'sessions#destroy'
+  # DEVISE
+  devise_for :users,
+             controllers: { sessions: 'users/sessions', passwords: 'users/passwords', registrations: 'users/registrations' }
 
-  # RESTful
-  resources :users do
-    member do
-      get 'activate', to: 'users#activate'
-    end
+  devise_scope :user do
+    get    'sign_up',  to: 'users/registrations#new'
+    get    'sign_in',  to: 'users/sessions#new'
+    delete 'sign_out', to: 'users/sessions#destroy'
   end
 
   root to: 'users#index'
