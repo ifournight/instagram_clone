@@ -2,9 +2,6 @@ class UsersController < ApplicationController
   # HOOKS
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
-  # MACROS
-  layout :resolve_layout
-
   # GET /users
   # GET /users.json
   def index
@@ -89,14 +86,5 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :website, :intro, :password, :password_confirmation)
-    end
-
-    def resolve_layout
-      case action_name
-      when "new"
-        "signup"
-      else
-        "application"
-      end
     end
 end

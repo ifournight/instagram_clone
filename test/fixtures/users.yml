@@ -3,20 +3,11 @@
 ifournight:
   name: ifournight
   email: ifournight@gmail.com
-  website: github.com/ifournight
-  intro: I am what i am
-  password_digest: <%= User.digest('password') %>
 
 momo:
   name: momo
   email: momo@cat.com
-  website: instagram.com/moerlang
-  intro: MyText
-  password_digest: <%= User.digest('password') %>
 
 ifournighthk:
   name: ifournighthk
   email: ifournighthk@gmail.com
-  website: github.com/ifournight
-  intro: ifournighthk
-  password_digest: <%= User.digest('password') %>
