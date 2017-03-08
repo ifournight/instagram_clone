@@ -1,0 +1,4 @@
+<% unless current_user.confirmed? %>
+  <p>你还还没油验证你的邮箱</p>
+<% end %>
+<h1>Welcome, <%= current_user.email %></h1>
