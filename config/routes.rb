@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'users/sessions#destroy'
   end
 
-  root to: 'users#index'
+  root to: 'home#index'
 
   # Advanced
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
