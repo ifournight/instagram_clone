@@ -1,0 +1,17 @@
+<%= form_for(follow_action) do |f| %>
+  <% if follow_action.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(follow_action.errors.count, "error") %> prohibited this follow_action from being saved:</h2>
+
+      <ul>
+      <% follow_action.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

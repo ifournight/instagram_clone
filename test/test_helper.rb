@@ -26,4 +26,38 @@ class ActiveSupport::TestCase
     user.activation_token  = User.new_token
     user.update_columns(activation_digest: User.digest(user.activation_token))
   end
+
+  def generate_unique_email
+    @@email_count ||= 0
+    @@email_count += 1
+    "test#{@@email_count}@example.com"
+  end
+
+  def generate_unique_name
+    @@name_count ||= 0
+    @@name_count += 1
+    "test#{@@name_count}"
+  end
+
+  def valid_attributes(attributes={})
+    { name: generate_unique_name,
+      email: generate_unique_email,
+      password: 'password',
+      password_confirmation: 'password' }.update(attributes)
+  end
+
+  def new_user(attributes={})
+    User.new(valid_attributes(attributes))  
+  end
+
+  def create_user(attributes={})
+    User.create!(valid_attributes(attributes))
+  end
+
+  def create_user_without_confirmation(attributes={})
+    user = new_user(attributes)
+    user.skip_confirmation!
+    user.save!
+    user
+  end
 end

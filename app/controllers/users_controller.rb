@@ -63,17 +63,28 @@ class UsersController < ApplicationController
     end
   end
 
-  # POST /users/1/activate
-  def activate
-    @user = User.find(params[:id])
-    activation_token = params[:activation_token]
-    if @user.authenticate(:activation, activation_token)
-      @user.activate
-      flash[:success] = "#{@user.name}, 你的邮箱已验证成功！"
-      redirect_to @user
+  # POST /users/follow
+  def follow
+    to_follow = User.find(params[:followed_id])
+    if current_user.not_following?(to_follow)
+      current_user.follow(to_follow)
+      @user = to_follow.reload
+      redirect_to "/#{to_follow.id}"
     else
-      flash[:danger] = "抱歉，认证邮箱的链接无效。"
-      redirect_to users_url, notice: "抱歉，认证邮箱的链接无效。"
+      user.errors[:base] << "already follow user #{to_follow.id}"
+      redirect_to request.referer || "/#{to_follow.id}"
+    end
+  end
+
+  # DELETE /users/follow
+  def unfollow
+    to_unfollow = User.find(params[:followed_id])
+    if current_user.following?(to_unfollow)
+      current_user.unfollow(to_unfollow)
+      redirect_to "/#{to_unfollow.id}"
+    else
+      user.errors[:base] << "can't unfollow if not following #{to_unfollow.id}"
+      redirect_to request.referer || "/#{to_unfollow.id}"
     end
   end
 

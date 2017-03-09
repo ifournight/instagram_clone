@@ -5,52 +5,16 @@ class UserTest < ActiveSupport::TestCase
     @ifournight = users(:ifournight)
     @momo = users(:momo)
   end
-  test 'user name should not be blank' do
-    invalid = ['', '    ']
-    invalid.each do |invalid_name|
-      @ifournight.name = invalid_name
-      assert @ifournight.invalid?
-      assert_not @ifournight.errors[:name].empty?
-    end
-  end
+  
+  test 'following relationship' do
+    @ifournight.follow(@momo)
 
-  test 'user name should be unique' do
-    user = User.new(name: @ifournight.name,
-                    email: "uniqueness_#{rand(1000)}@email.com",
-                    password: 'password',
-                    password_confirmation: 'password')
-    assert user.invalid?
-    assert_not user.errors[:name].empty?
-    assert_equal user.errors[:name][0], "Hey, User Name '#{@ifournight.name}' is already been taken!"
-  end
+    assert @ifournight.following.include?(@momo)
+    assert @momo.followers.include?(@ifournight)
 
-  test 'user email should not be blank' do
-    @ifournight.email = ''
-    assert @ifournight.invalid?
-    assert_not @ifournight.errors[:email].empty?
-  end
+    @ifournight.unfollow(@momo)
 
-  test 'user email should be unique' do
-    user = User.new(name: "unqiuename_#{rand(1000)}",
-                    email: @ifournight.email,
-                    password: 'password',
-                    password_confirmation: 'password')
-    assert user.invalid?
-    assert_not user.errors[:email].empty?
-    assert_equal user.errors[:email][0], "Hey, Email '#{@ifournight.email}' is already been taken!"
-  end
-
-  test 'user password validation test' do
-    user = User.new(name: "uniquename_#{rand(1000)}",
-                    email: "uniquemail_#{rand(1000)}@email.com",
-                    password: '',
-                    password_confirmation: '')
-    assert user.invalid?
-    assert_not user.errors[:password].empty?
-
-    user.password = 'password'
-    user.password_confirmation = 'password_different'
-    assert user.invalid?
-    assert_not user.errors[:password_confirmation].empty?
+    assert_not @ifournight.following.include?(@momo)
+    assert_not @momo.followers.include?(@ifournight)
   end
 end
