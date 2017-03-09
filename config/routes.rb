@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  get '/:id', to: 'users#show'
+  get '/:name', to: 'users#show'
 
   resources :users, only: [] do
     collection do
