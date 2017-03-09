@@ -10,7 +10,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should follow' do
     other_user = create_user_without_confirmation
-    other_user_url = "#{root_url}#{other_user.id}"
+    other_user_url = "#{root_url}#{other_user.name}"
 
     get other_user_url
     assert @user.not_following?(other_user)
@@ -26,7 +26,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test 'should unfollow' do
     other_user = create_user_without_confirmation
-    other_user_url = "#{root_url}#{other_user.id}"
+    other_user_url = "#{root_url}#{other_user.name}"
 
     @user.follow(other_user)
     get other_user_url

@@ -18,7 +18,7 @@
         <li class="o-list-inline__item"><a href="#">Explore</a></li>
         <li class="o-list-inline__item"><a href="#">Activities</a></li>
         <% if user_signed_in? %>
-          <li class="o-list-inline__item"> <%= link_to  "Sign_out", destroy_user_session_path, method: :delete %>  </li>
+          <li class="o-list-inline__item"> <%= link_to  "Sign_out", sign_out_path, method: :delete %>  </li>
         <% end %>
       </ul>
     </header>

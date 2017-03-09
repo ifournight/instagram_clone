@@ -253,10 +253,11 @@ Devise.setup do |config|
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
   #
-  # config.warden do |manager|
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(scope: :user).unshift :some_external_strategy
-  # end
+  config.warden do |manager|
+    # manager.intercept_401 = false
+    # manager.default_strategies(scope: :user).unshift :some_external_strategy
+    manager.failure_app = CustomFailure
+  end
 
   # ==> Mountable engine configurations
   # When using Devise inside an engine, let's call it `MyEngine`, and this engine
@@ -272,3 +273,39 @@ Devise.setup do |config|
   # so you need to do it manually. For the users scope, it would be:
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 end
+
+class CustomFailure < Devise::FailureApp
+  def route(scope)
+    if scope == :user
+      :sign_in_url
+    else
+      :"new_#{scope}_session_url"
+    end
+  end
+
+  def scope_url
+    opts  = {}
+
+    # Initialize script_name with nil to prevent infinite loops in
+    # authenticated mounted engines in rails 4.2 and 5.0
+    opts[:script_name] = nil
+
+    route = route(scope)
+
+    opts[:format] = request_format unless skip_format?
+
+    opts[:script_name] = relative_url_root if relative_url_root?
+
+    router_name = Devise.mappings[scope].router_name || Devise.available_router_name
+    context = send(router_name)
+
+    if context.respond_to?(route)
+      context.send(route, opts)
+    elsif respond_to?(:root_url)
+      root_url(opts)
+    else
+      "/"
+    end
+  end
+end
+

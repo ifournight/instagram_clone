@@ -1,14 +1,1 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-ifournight:
-  name: ifournight
-  email: ifournight@gmail.com
-  
-
-momo:
-  name: momo
-  email: momo@cat.com
- 
-ifournighthk:
-  name: ifournighthk
-  email: ifournighthk@gmail.com

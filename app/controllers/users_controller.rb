@@ -30,10 +30,10 @@ class UsersController < ApplicationController
     if current_user.not_following?(to_follow)
       current_user.follow(to_follow)
       @user = to_follow.reload
-      redirect_to "/#{to_follow.id}"
+      redirect_to "/#{to_follow.name}"
     else
-      user.errors[:base] << "already follow user #{to_follow.id}"
-      redirect_to request.referer || "/#{to_follow.id}"
+      user.errors[:base] << "already follow user #{to_follow.name}"
+      redirect_to request.referer || "/#{to_follow.name}"
     end
   end
 
@@ -42,10 +42,10 @@ class UsersController < ApplicationController
     to_unfollow = User.find(params[:followed_id])
     if current_user.following?(to_unfollow)
       current_user.unfollow(to_unfollow)
-      redirect_to "/#{to_unfollow.id}"
+      redirect_to "/#{to_unfollow.name}"
     else
-      user.errors[:base] << "can't unfollow if not following #{to_unfollow.id}"
-      redirect_to request.referer || "/#{to_unfollow.id}"
+      user.errors[:base] << "can't unfollow if not following #{to_unfollow.name}"
+      redirect_to request.referer || "/#{to_unfollow.name}"
     end
   end
 

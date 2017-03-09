@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
-  resources :follow_actions
   # DEVISE
   devise_for :users,
-             controllers: { sessions: 'users/sessions', passwords: 'users/passwords', registrations: 'users/registrations' }
+             controllers: {
+               passwords: 'users/passwords',
+               confirmations: 'users/confirmations'
+             },
+             only: [:passwords, :confirmations]
 
   devise_scope :user do
     get    'sign_up',  to: 'users/registrations#new'
+    post   'sign_up',  to: 'users/registrations#create'
     get    'sign_in',  to: 'users/sessions#new'
+    post   'sign_in',  to: 'users/sessions#create'
     delete 'sign_out', to: 'users/sessions#destroy'
   end
-
-  root to: 'home#index'
 
   get '/:name', to: 'users#show'
 
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
     end
   end
 
+  root to: 'home#index'
   # Advanced
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

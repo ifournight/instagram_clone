@@ -1,20 +1,21 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+
   def setup
-    @ifournight = users(:ifournight)
-    @momo = users(:momo)
+    @user = create_user({ name: 'ifournight', email: 'ifournight@gmail.com', encrypted_password: Devise::Encryptor.digest(User, 'codebone'), confirmed_at: Time.zone.now, sign_in_count: 0 })
   end
   
   test 'following relationship' do
-    @ifournight.follow(@momo)
+    other = create_user
+    @user.follow(other)
 
-    assert @ifournight.following.include?(@momo)
-    assert @momo.followers.include?(@ifournight)
+    assert @user.following.include?(other)
+    assert other.followers.include?(@user)
 
-    @ifournight.unfollow(@momo)
+    @user.unfollow(other)
 
-    assert_not @ifournight.following.include?(@momo)
-    assert_not @momo.followers.include?(@ifournight)
+    assert_not @user.following.include?(other)
+    assert_not other.followers.include?(@user)
   end
 end
