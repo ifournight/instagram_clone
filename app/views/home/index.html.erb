@@ -1,7 +1,36 @@
-<% unless current_user.confirmed? %>
+<div class="o-wrapper">
+  <% unless current_user.confirmed? %>
   <p>你还没有验证你的邮箱</p>
 <% end %>
-<h3>Welcome, <%= current_user.email %></h3>
+<h3>Welcome, <%= current_user.name %></h3>
 <p>
   <%= gravatar_for current_user %>
 </p>
+
+<%= form_for( current_user.posts.build, url: user_posts_path(current_user) ) do |f| %>
+<fieldset>
+  <div class="field">
+    <%= f.text_field :content %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Create post' %>
+  </div>
+</fieldset>
+<% end %>
+
+<section class="post_feeds">
+  <h4>Post feeds</h4>
+  <% current_user.post_feeds.each do |post| %>
+    <% if post.persisted? %>
+    <article class="post">
+      <p>
+        <%= gravatar_for(post.owner, size: 20) %> <%= post.owner.name %> <small><%= time_ago_in_words(post.created_at) %></small>
+      </p>
+      <p><%= post.content %></p>        
+    </article>
+    <% end %>
+  <% end %>
+</section>
+
+</div>

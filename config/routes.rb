@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'posts/create'
+
+  get 'posts/update'
+
+  get 'posts/destory'
+
   # DEVISE
   devise_for :users,
              controllers: {
@@ -22,7 +28,10 @@ Rails.application.routes.draw do
       post   :follow, to: 'users#follow'
       delete :follow, to: 'users#unfollow'
     end
+    resources :posts, only: [:new, :create]
   end
+
+  resources :posts, only: [:update, :destroy]
 
   root to: 'home#index'
   # Advanced

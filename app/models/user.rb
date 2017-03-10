@@ -12,6 +12,7 @@ class User < ApplicationRecord
                        source: :followed
   has_many :followers, through: :passive_follow_actions,
                        source: :follower
+  has_many :posts
 
 
   # Include default devise modules. Others available are:
@@ -36,5 +37,12 @@ class User < ApplicationRecord
 
   def not_following?(other_user)
     !following?(other_user)
+  end
+
+  def post_feeds
+    following_ids = "SELECT followed_id FROM follow_actions
+                        WHERE  follower_id = :user_id"
+    Post.where("user_id IN (#{following_ids})
+                        OR user_id = :user_id", user_id: id)
   end
 end

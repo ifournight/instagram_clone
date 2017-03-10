@@ -1,0 +1,11 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post {
+  background-color: #fff;
+  max-width: 400px;
+
+  border: solid #eee 1px;
+  margin-bottom: $inuit-global-spacing-unit;
+}
