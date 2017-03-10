@@ -1,7 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1><%= @user.name %></h1>
+<h3><%= @user.name %></h3>
+<p><%= gravatar_for @user %></p>
 
+<p>
+  following <%= pluralize(@user.following.count, 'people') %>
+</p>
+<p>
+  <%= pluralize(@user.followers.count, 'follower') %>
+</p>
 <% if current_user.id != @user.id %>
   <% if current_user.following?(@user) %>
     <%= button_to 'unfollow', follow_users_path(followed_id: @user), method: :delete %>

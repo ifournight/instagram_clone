@@ -2,10 +2,30 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   include Devise::Test::IntegrationHelpers
-
+  include ActionView::Helpers::TextHelper
   def setup
     @user = create_user_without_confirmation
     sign_in @user
+  end
+
+  test '/:name path should get user page' do
+    user_url = "#{root_url}#{@user.name}"
+    get user_url
+
+    assert_select "img.gravatar[src='#{gravatar_url_for(@user)}']"
+    assert_select 'p', 'following 0 people', 1
+    assert_select 'p', '0 followers', 1
+    assert_select '.button_to', false
+
+    10.times do
+      other_user = create_user_without_confirmation
+      @user.follow(other_user)
+      other_user.follow(@user)
+    end
+
+    get user_url
+    assert_select 'p', "following #{pluralize(@user.following.count, 'people')}", 1
+    assert_select 'p', pluralize(@user.followers.count, 'follower'), 1
   end
 
   test 'should follow' do

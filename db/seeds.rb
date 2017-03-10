@@ -8,5 +8,7 @@
 
 users = User.create([
   { name: 'ifournight', email: 'ifournight@gmail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.zone.now, sign_in_count: 0 },
-  { name: 'momo', email: 'momo@gmail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.zone.now, sign_in_count: 0 }
+  { name: 'momo', email: 'momo@gmail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.zone.now, sign_in_count: 0 },
+  { name: 'sweetkuma', email: 'sweetkuma@gmail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.zone.now, sign_in_count: 0 },
+  { name: 'ifournighthk', email: 'ifournighthk@gmail.com', password: 'password', password_confirmation: 'password', confirmed_at: Time.zone.now, sign_in_count: 0 }
 ])

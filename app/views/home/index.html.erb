@@ -1,4 +1,7 @@
 <% unless current_user.confirmed? %>
   <p>你还没有验证你的邮箱</p>
 <% end %>
-<h1>Welcome, <%= current_user.email %></h1>
+<h3>Welcome, <%= current_user.email %></h3>
+<p>
+  <%= gravatar_for current_user %>
+</p>
