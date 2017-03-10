@@ -53,6 +53,7 @@ group :development do
   # Use guard to achive automatic
   gem 'guard'
   gem 'guard-livereload'
+  gem 'guard-minitest'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
