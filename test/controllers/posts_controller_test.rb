@@ -9,12 +9,10 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get create' do
     assert_difference 'Post.count' do
+      picture = generate_picture
       post user_posts_path(@user), params:
       {
-        post:
-        {
-          content: 'content'
-        }
+        post: { content: 'content', picture: picture }
       }
     end
 

@@ -2,14 +2,14 @@ require 'test_helper'
 
 class PostTest < ActiveSupport::TestCase
   test 'post must have user_id' do
-    post = Post.new
+    post = new_post
     assert post.invalid?
     assert_match(/blank/, post.errors[:user_id].join)
   end
 
   test 'post fetched from database should be sorted decrementally based on creation date' do
     10.times do
-      Post.new({content: ''})
+      new_post
     end
 
     posts = Post.first(10)
@@ -19,5 +19,12 @@ class PostTest < ActiveSupport::TestCase
         assert post.created_at > posts[index + 1].created_at
       end
     end
+  end
+
+  test "post picture can't be blank" do
+    post = Post.new(content: 'blabla')
+    assert post.invalid?
+
+    assert_match(/blank/, post.errors[:picture].join)
   end
 end

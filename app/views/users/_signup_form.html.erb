@@ -1,17 +1,5 @@
 <%= form_for( user ) do |f| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2>
-        <%= pluralize(user.errors.count, "error") %> 导致了注册失败:</h2>
-      <ul>
-        <% user.errors.full_messages.each do |message| %>
-          <li>
-            <%= message %>
-          </li>
-          <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= render 'shared/error_messages', object: user %>
 
   <div class="field">
     <%= f.text_field :email, placeholder: '邮箱' %>

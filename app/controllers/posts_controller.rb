@@ -2,11 +2,8 @@ class PostsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.build(post_params)
-    if @post.save
-      redirect_to request.referer || root_url
-    else
-      redirect_to request.referer || root_url
-    end
+    @post.save
+    redirect_to request.referer || root_url
   end
 
   def update
@@ -18,6 +15,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :user_id)
+    params.require(:post).permit(:content, :user_id, :picture)
   end
 end

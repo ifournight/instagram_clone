@@ -1,11 +1,33 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.post_feeds {
+  padding: $inuit-global-spacing-unit 0;
+}
 
 .post {
   background-color: #fff;
-  max-width: 400px;
+  max-width: 600px;
 
   border: solid #eee 1px;
   margin-bottom: $inuit-global-spacing-unit;
+
+  header {
+    margin-bottom: $inuit-global-spacing-unit;
+    padding-left: $inuit-global-spacing-unit;
+
+    small {
+      float: right;
+      padding-right: $inuit-global-spacing-unit;
+    }
+  }
+
+  .post__content {
+    padding: 0 $inuit-global-spacing-unit;
+  }
+}
+
+form.new_post {
+  max-width: 600px;
+  background-color: #fff;
 }

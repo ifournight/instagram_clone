@@ -2,10 +2,11 @@ ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 
+
 class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
-
+  include ActionDispatch::TestProcess
   # Add more helper methods to be used by all tests here...
   def extract_activation_token(text)
     activation_token = ''
@@ -23,7 +24,7 @@ class ActiveSupport::TestCase
   end
 
   def help_create_activation_digest(user)
-    user.activation_token  = User.new_token
+    user.activation_token = User.new_token
     user.update_columns(activation_digest: User.digest(user.activation_token))
   end
 
@@ -64,5 +65,17 @@ class ActiveSupport::TestCase
   def gravatar_url_for(user, size: 80)
     gravatar_id = Digest::MD5::hexdigest(user.email.downcase)
     "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
+  end
+
+  def generate_picture
+    fixture_file_upload('test/fixtures/rails.png', 'image/png')
+  end
+
+  def new_post
+    Post.new(content: 'blabla', picture: generate_picture)
+  end
+
+  def create_post
+    Post.create!(content: 'blabla', picture: generate_picture)
   end
 end

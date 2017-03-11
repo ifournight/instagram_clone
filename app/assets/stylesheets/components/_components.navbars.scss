@@ -1,11 +1,10 @@
-$navbar_height: 77px;
+$navbar_height: 60px;
 $navbar_bg_color: #fff;
 
 .c-navbar {
   height: $navbar_height;
 
   background-color: $navbar_bg_color;
-  border-bottom: solid 1px #eee;
 }
 
   .c-navbar__nav {

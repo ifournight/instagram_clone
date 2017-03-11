@@ -22,9 +22,13 @@
         <% end %>
       </ul>
     </header>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div id="main">
+      <div class="o-wrapper">
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        <%= yield %>
+      </div>
+    </div>
     <footer id="footer">
       <ul class="o-list-inline">
         <li class="o-list-inline__item">
