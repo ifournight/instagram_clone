@@ -6,6 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script>
+      document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')
+    </script>
   </head>
 
   <body>
@@ -15,6 +18,7 @@
       <div class="main" data-ui-component="main">
 
           <%= yield %>
+          
       </div>
       
       <%= render 'shared/footer' %>      

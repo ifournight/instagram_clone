@@ -16,9 +16,10 @@
 
       <div class="c-form__field">
         <%= f.submit "登录", class: 'c-form__field c-btn c-btn--small c-btn--primary'%>
+        <%= link_to "忘记密码？", new_password_path(resource_name), class: 'c-link c-link--primary' %>
       </div>
 
-      <div class="notice u-text-color-red"><%= notice %></div>
+      <div class="notice"><%= notice %></div>
       <div class="alert u-text-color-red"><%= alert %></div>
 
     <% end %>
