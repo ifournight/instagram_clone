@@ -18,4 +18,15 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.following.include?(other)
     assert_not other.followers.include?(@user)
   end
+
+  test 'user comment on post' do
+    post = create_post
+
+    comment = @user.comment_on(post, 'blabla')
+    assert comment.valid?
+    comment.save
+
+    assert @user.reload.comments.include? comment
+    assert post.reload.comments.include? comment
+  end
 end

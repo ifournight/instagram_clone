@@ -71,11 +71,32 @@ class ActiveSupport::TestCase
     fixture_file_upload('test/fixtures/rails.png', 'image/png')
   end
 
-  def new_post
-    Post.new(content: 'blabla', picture: generate_picture)
+  def valid_post_attributes(attributes={})
+    { content: 'blabla',
+      picture: generate_picture,
+      user_id: create_user.id}.update(attributes)
   end
 
-  def create_post
-    Post.create!(content: 'blabla', picture: generate_picture)
+  def new_post(attributes={})
+    Post.new(valid_post_attributes(attributes))
+  end
+
+  def create_post(attributes={})
+    Post.create!(valid_post_attributes(attributes))
+  end
+
+  def valid_comment_attributes(attributes={})
+    { content: 'blabla',
+      user_id: create_user.id,
+      post_id: create_post.id
+    }.update(attributes)
+  end
+
+  def new_comment(attributes)
+    Comment.new(valid_comment_attributes(attributes))
+  end
+
+  def create_comment(attributes)
+    Comment.create!(valid_comment_attributes(attributes))
   end
 end

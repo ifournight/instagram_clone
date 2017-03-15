@@ -1,10 +1,4 @@
 Rails.application.routes.draw do
-  get 'posts/create'
-
-  get 'posts/update'
-
-  get 'posts/destory'
-
   # DEVISE
   devise_for :users,
              controllers: {
@@ -31,7 +25,11 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create]
   end
 
-  resources :posts, only: [:update, :destroy]
+  resources :posts, only: [:update, :destroy] do
+    resources :comments, only: [:new, :create]
+  end
+
+  resources :comments, only: [:update, :destroy]
 
   root to: 'home#index'
   # Advanced
