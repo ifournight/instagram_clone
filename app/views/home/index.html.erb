@@ -1,45 +1,11 @@
-
 <% unless current_user.confirmed? %>
   <p>你还没有验证你的邮箱</p>
 <% end %>
-<h3>Welcome, <%= current_user.name %></h3>
-<p>
-  <%= gravatar_for current_user %>
-</p>
 
-<%= form_for( current_user.posts.build, url: user_posts_path(current_user)) do |f| %>
-<%= render 'shared/error_messages', object: @post %>
-<fieldset>
-  <div class="field">
-    <%= f.file_field :picture %>
-  </div>
-  <div class="field">
-    <%= f.text_field :content %>
-  </div>
-  <div class="actions">
-    <%= f.submit 'Create post' %>
-  </div>
-</fieldset>
-<% end %>
+<%= render 'posts/new_post', post: @post %>
 
-<section class="post_feeds">
-  <h4>Post feeds</h4>
-  <% current_user.post_feeds.each do |post| %>
-    <% if post.persisted? %>
-    <article class="post">
-      <header>
-        <p></p>
-        <%= gravatar_for(post.owner, size: 20) %> <%= post.owner.name %> <small><%= time_ago_in_words(post.created_at) %></small>
-      </header>
-      <body>
-      <% unless post.picture.file.nil? %>
-        <p>
-        <%= image_tag  post.picture.url, class_name: 'post__picture' %>
-        </p>
-      <% end %>
-      <p class="post__content"><%= post.content %></p>
-      </body>
-    </article>
-    <% end %>
-  <% end %>
+<section class="u-margin-bottom-large o-wrapper c-post-list c-post-list--main" data-ui-component="post-list-main">
+  
+  <%= render current_user.post_feeds %>
+
 </section>

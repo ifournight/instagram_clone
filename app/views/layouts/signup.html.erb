@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-  <title>InstagramClone</title>
-  <%= csrf_meta_tags %>
+  <head>
+    <title>InstagramClone</title>
+    <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-</head>
+  </head>
 
-<body>
-  <p class="notice">
-    <%= notice %>
-  </p>
-  <p class="alert">
-    <%= alert %>
-  </p>
-  <%= yield %>
-  <footer id="footer">
-    <ul class="o-list-inline">
-      <li class="o-list-inline__item">
-        <a href="#">About</a>
-      </li>
-      <li class="o-list-inline__item">
-        <a href="#">API</a>
-      </li>
-      <li class="o-list-inline__item">
-        <a href="#">Jobs</a>
-      </li>
-      <li class="o-list-inline__item">
-        <a href="#">Lauguages</a>
-      </li>
-    </ul>
-  </footer>
-</body>
+  <body>
+    
+    <div class="root">
 
+      <div class="main" data-ui-component="main">
+
+          <%= yield %>
+      </div>
+      
+      <%= render 'shared/footer' %>      
+
+    </div>
+    
+    
+  </body>
 </html>

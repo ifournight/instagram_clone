@@ -1,0 +1,31 @@
+.root {
+  background-color: $color-bg-main;
+}
+
+.main, .footer, .header {
+  background-color: $color-bg-main;
+}
+
+.main {
+  height: 100%;
+}
+
+.u-text-color-red {
+  color: $color-red-primary;
+}
+
+.u-text-color-light-gray {
+  color: $color-light-gray;
+}
+
+.u-text-color-gray {
+  color: $color-gray;
+}
+
+.u-text-color-dark-gray{
+  color: $color-dark-gray;
+}
+
+.u-text-color-notice {
+  color: $color-dark-gray;
+}

@@ -1,0 +1,18 @@
+
+<%= form_for( current_user.posts.build, url: user_posts_path(current_user), html: {class: "o-wrapper c-form c-form--primary c-form--block c-card c-card--primary u-padding u-margin-bottom-large"}) do |f| %>
+
+  <%= render 'shared/error_messages', object: post %>
+
+  <div class="c-form__field">
+    <%= f.file_field :picture, class: 'c-form__control' %>
+  </div>
+
+  <div class="c-form__field">
+    <%= f.text_field :content, class: 'c-form__control', placeholder: "输入..." %>
+  </div>
+  
+  <div class="c-form__field">
+    <%= f.submit 'Create post', class: 'c-form__control c-btn c-btn--primary c-btn--tiny' %>
+  </div>
+
+<% end %>

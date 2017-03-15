@@ -1,0 +1,7 @@
+/* Give link elements a global style */
+a {
+  color: #003569;
+  &:visited {
+    color: #003569;
+  }
+}

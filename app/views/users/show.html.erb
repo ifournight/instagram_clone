@@ -1,18 +1,58 @@
-<p id="notice"><%= notice %></p>
+<article class='c-user-page u-padding-vertical-large u-padding-horizontal' data-ui-component="user-page">
 
-<h3><%= @user.name %></h3>
-<p><%= gravatar_for @user %></p>
+  <header class='c-user-profile u-margin-right' data-ui-component="user-profile">
 
-<p>
-  following <%= pluralize(@user.following.count, 'people') %>
-</p>
-<p>
-  <%= pluralize(@user.followers.count, 'follower') %>
-</p>
-<% if current_user.id != @user.id %>
-  <% if current_user.following?(@user) %>
-    <%= button_to 'unfollow', follow_users_path(followed_id: @user), method: :delete %>
-  <% else %>
-    <%= button_to  "follow", follow_users_path(followed_id: @user) %>
-  <% end %>
-<% end %>
+    <div class='c-user-profile__change-avatar u-margin-right'>
+      <%= gravatar_for @user, size: 150, class_name: 'c-user-profile__avatar u-margin-horizontal-large' %>
+    </div>
+
+    <div class='c-user-profile__info'>
+
+      <div class='c-user-profile__row'>
+        <h1 class='c-user-profile__unit c-user-profile__username u-margin-right u-h2'><%= @user.name %></h1>
+        <% if current_user.id != @user.id %>
+          <% if current_user.following?(@user) %>
+            <%= button_to '取消关注', follow_users_path(followed_id: @user), method: :delete, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
+          <% else %>
+            <%= button_to  "正在关注", follow_users_path(followed_id: @user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
+          <% end %>
+        <% end %>
+        <div class="c-icon-main c-icon-main__more-actions"></div>
+      </div>
+
+      <ul class='c-user-profile__row'>
+
+        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>已发帖<%= @user.posts.count %></li>
+        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'><%= pluralize(@user.followers.count, 'people') %>人关注</li>
+        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>正在关注<%= @user.following.count %></li>
+
+      </ul>
+
+    </div>
+
+  </header>
+
+  <main class="c-user-posts u-margin-vertical-large">
+    <% @user.posts.each.with_index do |post, index| %>
+      <% if index % 3 == 0 %>
+        <div class="c-users-posts__row u-margin-bottom">
+      <% end %>
+
+      <%= render 'posts/post_users', post: post %>
+
+      <% if index == @user.posts.count - 1 && @user.posts.count % 3 != 0 %>
+
+        <% (3 - @user.posts.count % 3).times do %>
+          <%= render 'posts/empty_post_users' %>
+        <% end %>
+
+      <% end %>
+
+      <% if index % 3 == 2 %>
+        </div>
+      <% end %>
+
+    <% end %>
+
+  </main>
+</article>

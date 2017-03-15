@@ -7,3 +7,22 @@
 // Standardise some UI treatments.
 $global-radius: 3px !default;
 $global-transition: all 300ms ease-in-out !default;
+
+// Color
+$color-light-gray: #fafafa;
+$color-gray: #e6e6e6;
+$color-dark-gray: #999;
+
+$color-white: #fff;
+$color-bg-main: $color-light-gray;
+
+$color-red-primary: #ed4956;
+$color-blue-primary: #3897f0;
+
+$color-primary: $color-blue-primary;
+$color-danger: $color-red-primary;
+$color-error: $color-red-primary;
+
+$border-radius-large: 16px;
+$border-radius-middle: 8x;
+$border-radius-small: 4px;

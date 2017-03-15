@@ -1,0 +1,63 @@
+/*
+  Icon set for the website
+*/
+
+.c-icon { 
+  background-repeat: no-repeat;
+}
+
+.c-icon-main {
+  display: inline-block;
+  
+  background: asset-url("eb5eb7.png");
+  background-repeat: no-repeat;
+}
+
+.c-icon-main__primary {
+  background-position: 0 0;
+  height: 51px;
+  width: 175px;
+}
+
+.c-icon-main__secondary {
+  background-position: -177px 0;
+  height: 35px;
+  width: 176px;
+}
+
+.c-icon-main__compass {
+  background-position: -316px -272px;
+  height: 24px;
+  width: 24px;
+}
+
+.c-icon-main__activity {
+  background-position: -264px -272px;
+  height: 24px;
+  width: 24px;
+}
+
+.c-icon-main__profile {
+  background-position: -238px -272px;
+  height: 24px;
+  width: 24px;
+}
+
+.c-icon-main__heart_fill {
+  background-position: -104px -322px;
+  height: 24px;
+  width: 24px;
+}
+
+.c-icon-main__heart_open {
+  background-position: -130px -322px;
+  height: 24px;
+  width: 24px;
+}
+
+.c-icon-main__more-actions {
+  background-position: -308px -37px;
+  height: 44px;
+  width: 44px;
+}
+

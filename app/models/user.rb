@@ -12,7 +12,8 @@ class User < ApplicationRecord
                        source: :followed
   has_many :followers, through: :passive_follow_actions,
                        source: :follower
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
 
   # Include default devise modules. Others available are:
@@ -44,5 +45,15 @@ class User < ApplicationRecord
                         WHERE  follower_id = :user_id"
     Post.where("user_id IN (#{following_ids})
                         OR user_id = :user_id", user_id: id)
+  end
+
+  class CommentOnInvalidPostError < StandardError
+  end
+  
+  def comment_on(post, content)
+    throw CommentOnInvalidPostError.new if post.invalid?
+    throw CommentOnInvalidPostError.new unless post.persisted?
+
+    comment = comments.build(content: content, post_id: post.id, user_id: id)
   end
 end

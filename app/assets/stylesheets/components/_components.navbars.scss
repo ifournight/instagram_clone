@@ -1,20 +1,47 @@
-$navbar_height: 60px;
-$navbar_bg_color: #fff;
+/*
+component: navbar
+*/
 
-.c-navbar {
-  height: $navbar_height;
+$navbar-height-primary: 77px;
 
-  background-color: $navbar_bg_color;
+.c-header { 
+  height: 77px;
+  background-color: white;
+  border-bottom: 1px solid $color-gray;
 }
 
-  .c-navbar__nav {
-    display: inline-block;
+.c-navbar {
+  display: flex;
+
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.c-navbar--glost {
+  background-color: transparent;
+}
+
+  .c-navbar__item {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex: 1 1 auto;
   }
 
-  .c-navbar__form {
-    display: inline-block;
+  .c-navbar__item--important {
+    flex: 1 9999 auto;
   }
 
-  .c-navbar__header {
-    display: inline-block;
+  .c-nav__item--not-so-important {
+    flex: 0 1 auto;
+  }
+
+  .c-navbar__item--align-right {
+    justify-content: flex-end;
+  }
+
+  .c-navbar__item--align-left {
+    justify-content: flex-start;
   }

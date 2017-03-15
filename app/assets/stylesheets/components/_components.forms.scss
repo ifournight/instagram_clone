@@ -1,0 +1,44 @@
+.c-form {}
+
+.c-form--primary {}
+
+.c-form--block {}
+
+
+.c-form__field {
+  margin-bottom: 12px;
+  
+  .c-form--block & {
+    display: block;
+    width: 100%;  
+  }
+}
+
+.c-form__control {
+
+  .c-form--block & {
+    display: block;
+    width: 100%;
+
+  }
+
+  .c-form--primary & {
+    padding: $inuit-global-spacing-unit-tiny;
+    border: 1px solid #dbdbdb;
+    border-radius: $border-radius-small;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-shadow: none;
+    outline: none;
+
+    &:hover,
+    &:active,
+    &:focus {
+      border: 1px solid darkgray;
+    }
+  }
+}
+
+.c-form__control--bare {
+  border: none !important;
+}

@@ -1,26 +1,32 @@
-<h2>Log in</h2>
+<section class="o-wrapper u-margin-vertical-large">
 
-<%= form_for(resource, as: resource_name, url: sign_in_path) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
+  <article class="o-wrapper u-margin-bottom-small c-card c-card--primary u-align-center">
+
+    <h1 class="o-wrapper u-margin-top u-margin-bottom-tiny c-icon-main c-icon-main__primary"></h1>
+
+    <%= form_for(:user, url: sign_in_path, html: {class: 'c-form c-form--block c-form--primary u-padding-horizontal-large u-margin-bottom'}) do |f| %>
+
+      <div class="c-form__field">
+        <%= f.email_field :email, class: 'c-form__control', autofocus: true, placeholder: '邮箱' %>
+      </div>
+
+      <div class="c-form__field">
+        <%= f.password_field :password, class: 'c-form__control', autofocus: true, placeholder: '密码确认' %>
+      </div>     
+
+      <div class="c-form__field">
+        <%= f.submit "登录", class: 'c-form__field c-btn c-btn--small c-btn--primary'%>
+      </div>
+
+      <div class="notice u-text-color-red"><%= notice %></div>
+      <div class="alert u-text-color-red"><%= alert %></div>
+
+    <% end %>
+
+  </article>
+
+  <div class="u-align-center o-wrapper c-card c-card--primary u-padding">
+    <span>没有账户？<%= link_to  "请注册", sign_up_path, class: 'c-link c-link--primary'%></span>
   </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
-    </div>
-  <% end -%>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>
+</section>

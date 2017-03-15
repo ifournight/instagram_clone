@@ -1,0 +1,212 @@
+/*
+  Application Component: Post
+*/
+$post-width-default: 600px;
+
+.c-post-list {}
+
+.c-post-list--main {
+  max-width: $post-width-default;
+  min-width: 400px;
+}
+.c-post-list--user {
+  max-width: 960px;
+}
+
+.c-new-post {
+  max-width: $post-width-default;
+  min-width: 400px;
+}
+
+
+
+
+
+.c-post {
+  border: 1px solid #e7e7e7;
+  background: #fff;
+}
+
+  .c-post__header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+  }
+    .c-post__avatar {
+      
+      border-radius: 50%;
+      
+      .c-post--main & {
+        width: 40px;
+        flex: 0 1 auto;
+
+      }
+    }
+    
+     .c-post__owner {
+       font-weight: bold;
+
+       flex: 1 1 auto;
+     }
+     
+     .c-post__posted-at {
+       color: $color-dark-gray;
+       flex: 0 1 auto;
+     }
+    
+  .c-post__footer-bar {
+    border-top: 1px solid $color-light-gray;
+    display: flex;
+    align-items: center;
+  }
+  
+      .c-post__like-action {
+        width: 60px;
+        flex: 0 1 auto;
+        margin-right: $inuit-global-spacing-unit-small;
+      }
+      
+      .c-post__new-comment {
+        display: flex;
+
+        flex: 9999 9999 auto;
+
+        input {
+          flex: 9999 9999 auto;
+
+          &,
+          &:active,
+          &:hover,
+          &:focus {
+            border: none;
+          }
+        }
+
+        .c-btn {
+          flex: 0 1 auto;
+        }
+      }
+
+      .c-post__more-actions {
+        flex: 0 1 auto;
+      }
+      
+      
+      
+      
+      
+/*
+  Application Component: Comment
+*/
+.a-comment-list {
+  margin-left: 0;
+}
+
+
+
+
+
+/*
+  Application Component: User
+*/
+.c-user-page {
+  max-width: 935px + 2 * $inuit-global-spacing-unit;
+
+  margin: 0 auto 30px;
+
+  width: calc(100% - 2 * 24px);
+}
+
+.c-user-profile {
+  display: flex;
+  align-items: top;
+}
+
+  .c-user-profile__change_avatar {
+    flex: 0 1 auto;
+  }
+
+    .c-user-profile__avatar {
+      border-radius: 50%;
+    }
+
+  .c-user-profile__info {
+    flex: 2 2 auto;
+
+    display: flex;
+    flex-direction: column;
+    // align-items: center;
+    // justify-content: flex-start;
+  }
+
+    .c-user-profile__row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+
+      margin: 0;
+
+      margin-bottom: $inuit-global-spacing-unit;
+    }
+
+    .c-user-profile__unit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      flex: 0 1 auto;
+    }
+
+    .c-user-profile__username {
+      margin-top: 0;
+      margin-bottom: 0;
+
+      font-weight: 300;
+    }
+
+.c-user-posts {
+}
+
+  .c-users-posts__row {
+    display: flex;
+
+    align-items: center;  
+    justify-content: flex-start;
+  }
+
+  .c-post--users {
+    background-color: white;
+    border: 1px solid $color-gray;
+  }
+
+    .c-post__base {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 100%;
+    }
+
+    .c-post__body {
+      
+      .c-post--users & {
+        display: flex;
+
+        align-items: center;
+
+        position: absolute;
+
+        top: 0;
+        bottom: 0;
+      }
+
+    }
+
+.c-post-click {
+
+  .c-user-posts & {
+    flex: 1 0 0%;
+    display: flex;
+    width: 100%;
+    position: relative;
+  }
+}
