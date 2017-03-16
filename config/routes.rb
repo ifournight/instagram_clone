@@ -17,6 +17,9 @@ Rails.application.routes.draw do
 
   get '/:name', to: 'users#show'
 
+  get '/:name/followers', to: 'users#followers', as: 'user_followers'
+  get '/:name/following', to: 'users#following', as: 'user_following'
+
   resources :users, only: [] do
     collection do
       post   :follow, to: 'users#follow'

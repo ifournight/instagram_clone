@@ -10,12 +10,6 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test '/:name path should get user page' do
     user_url = "#{root_url}#{@user.name}"
-    get user_url
-
-    assert_select "img.gravatar[src='#{gravatar_url_for(@user)}']"
-    assert_select 'p', 'following 0 people', 1
-    assert_select 'p', '0 followers', 1
-    assert_select '.button_to', false
 
     10.times do
       other_user = create_user_without_confirmation
@@ -24,8 +18,17 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     end
 
     get user_url
-    assert_select 'p', "following #{pluralize(@user.following.count, 'people')}", 1
-    assert_select 'p', pluralize(@user.followers.count, 'follower'), 1
+
+    assert_select ".c-user-profile__avatar[src='#{gravatar_url_for(@user, size: 150)}']", 1
+    assert_select '.c-user-profile__username', @user.name
+    assert_select '.c-user-profile__info .c-user-profile__unit', "已发帖 #{@user.posts.count}", 1
+    assert_select '.c-user-profile__info .c-user-profile__unit', "正在关注 #{@user.following.count}", 1
+    assert_select '.c-user-profile__info .c-user-profile__unit', "#{@user.following.count} 人关注", 1
+
+    @user.posts.each do |post|
+      assert_match post.content, response.body.to_s
+      assert_select "img[src='#{post.picture.middle.url}"
+    end
   end
 
   test 'should follow' do

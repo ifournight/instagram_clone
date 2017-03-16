@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # HOOKS
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [:show, :followers, :following]
   skip_before_action :authenticate_user!, only: [:show]
 
   # GET /users/1
@@ -31,7 +31,7 @@ class UsersController < ApplicationController
     if current_user.not_following?(to_follow)
       current_user.follow(to_follow)
       @user = to_follow.reload
-      redirect_to "/#{to_follow.name}"
+      redirect_to request.referer || "/#{to_follow.name}"
     else
       user.errors[:base] << "already follow user #{to_follow.name}"
       redirect_to request.referer || "/#{to_follow.name}"
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
     to_unfollow = User.find(params[:followed_id])
     if current_user.following?(to_unfollow)
       current_user.unfollow(to_unfollow)
-      redirect_to "/#{to_unfollow.name}"
+      redirect_to request.referer || "/#{to_unfollow.name}"
     else
       user.errors[:base] << "can't unfollow if not following #{to_unfollow.name}"
       redirect_to request.referer || "/#{to_unfollow.name}"

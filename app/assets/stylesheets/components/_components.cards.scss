@@ -5,5 +5,14 @@
 
   border: 1px solid $color-gray;
 
-  max-width: 350px;
+  max-width: 600px;
 }
+
+.c-card--small {
+
+  &.c-card--primary {
+
+    max-width: 350px;
+  }
+}
+

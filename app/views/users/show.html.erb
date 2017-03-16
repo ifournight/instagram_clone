@@ -25,9 +25,13 @@
 
       <ul class='c-user-profile__row'>
 
-        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>已发帖<%= @user.posts.count %></li>
-        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'><%= pluralize(@user.followers.count, 'people') %>人关注</li>
-        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>正在关注<%= @user.following.count %></li>
+        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>已发帖 <%= @user.posts.count %></li>
+        <a class="c-link c-link--silence" href=<%= user_followers_path(name: @user.name) %> >
+          <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'><%= @user.followers.count %> 人关注</li>
+        </a>
+        <a class="c-link c-link--silence" href=<%= user_following_path(name: @user.name) %> >
+          <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>正在关注 <%= @user.following.count %></li>
+        </a>
 
       </ul>
 

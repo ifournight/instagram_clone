@@ -56,7 +56,6 @@ class User < ApplicationRecord
 
   # Like a post
   def like(post)
-    debugger
     liked_posts << post
   end
 
