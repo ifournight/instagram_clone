@@ -1,6 +1,12 @@
 <div class="c-post__footer-bar u-padding-vertical-small" default-ui-component="new-comment">
 
-  <div class="c-icon-main c-icon-main__heart_open c-post__like-action"></div>
+  <% if user_signed_in? %>
+    <% if current_user.like?(post) %>
+      <%= link_to  "", like_user_path(id: current_user.id, post_id: post.id), method: :delete, class: 'c-icon-main c-icon-main__heart_fill c-post__like-action' %>
+    <% else %>
+      <%= link_to  "", like_user_path(id: current_user.id, post_id: post.id), method: :post, class: 'c-icon-main c-icon-main__heart_open c-post__like-action' %>
+    <% end %>
+  <% end %>
 
   <%= form_for( post.comments.build, url: post_comments_path(post, user_id: current_user.id), html: { class: 'c-post__new-comment c-form c-form--primary'}) do |f| %>
 

@@ -60,4 +60,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_select ".button_to input[value='follow']"
     assert @user.reload.not_following?(other_user.reload)
   end
+
+  test 'should like' do
+    other_user = create_user_without_confirmation
+    @user.follow(other_user)
+    post = create_post(user_id: other_user.id)
+    get root_url
+    assert_equal LikeAction.count, 0
+    assert_not @user.like?(post)
+
+    assert_difference 'LikeAction.count', 1 do
+      post like_user_path(id: @user.id, post_id: post.id)
+    end
+
+    assert @user.like?(post)
+  end
 end

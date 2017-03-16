@@ -50,6 +50,34 @@ class UsersController < ApplicationController
     end
   end
 
+  def like
+    @post = Post.find(params[:post_id])
+    @user = User.find(params[:id])
+
+    if @user.like?(@post)
+      @user.errors[:base] << "repeat like."
+    else
+      @user.like(@post)
+      @user = @user.reload
+    end
+    
+    redirect_to request.referer || root_url
+  end
+
+  def unlike
+    @post = Post.find(params[:post_id])
+    @user = User.find(params[:id])
+
+    if @user.like?(@post)
+      @user.unlike(@post)
+      @user = @user.reload
+    else
+      @user.errors[:base] << "repeat unlike."
+    end
+    
+    redirect_to request.referer || root_url
+  end
+
   private
 
     # Use callbacks to share common setup or constraints between actions.

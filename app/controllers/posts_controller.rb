@@ -6,9 +6,6 @@ class PostsController < ApplicationController
     redirect_to request.referer || root_url
   end
 
-  def update
-  end
-
   def destory
   end
 

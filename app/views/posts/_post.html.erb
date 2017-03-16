@@ -18,6 +18,23 @@
   </div>
 
   <div class="c-post__attr u-padding">
+    <% if post.likes.any? %>
+      <div class="o-media o-media--small">
+        <div class="o-media__body">
+        
+          <% if post.likes.count < 10 %>
+            <% s= post.likes.inject('') do |sum, like| %>
+              <% separator = like == post.likes.last ? "" : ", " %>
+              <% sum += "#{like.user.name}#{separator}" %>
+            <% end %>
+            <strong><%= s %> 赞了</strong>
+          <% else %>
+            <strong><%= post.likes.count %> 个赞</strong>
+          <% end %>
+
+        </div>
+      </div>
+    <% end %>
     <div class="o-media o-media--small">
       <div class="o-media__body">
 
@@ -35,7 +52,7 @@
     <% if post.reload.comments.any? %>
     <ul class="a-comment-list u-margin-top" data-ui-component="comments-list">
 
-      <%= render post.reload.comments %>
+      <%= render post.reload.comments, post: post %>
 
     </ul>
     <% end %>

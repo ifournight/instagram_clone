@@ -22,6 +22,12 @@ Rails.application.routes.draw do
       post   :follow, to: 'users#follow'
       delete :follow, to: 'users#unfollow'
     end
+
+    member do
+      post   :like, to: 'users#like'
+      delete :like, to: 'users#unlike'
+    end
+
     resources :posts, only: [:new, :create]
   end
 
@@ -30,6 +36,9 @@ Rails.application.routes.draw do
   end
 
   resources :comments, only: [:update, :destroy]
+
+  # post   :like_action, to: 'users#like', as: 'user_like'
+  # delete :like_action, to: 'users#unlike', as: 'user_unlike'
 
   root to: 'home#index'
   # Advanced

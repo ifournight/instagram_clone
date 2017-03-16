@@ -14,7 +14,7 @@
           <% if current_user.following?(@user) %>
             <%= button_to '取消关注', follow_users_path(followed_id: @user), method: :delete, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
           <% else %>
-            <%= button_to  "正在关注", follow_users_path(followed_id: @user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
+            <%= button_to  "关注用户", follow_users_path(followed_id: @user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
           <% end %>
         <% end %>
         <% if user_signed_in? && current_user.id == @user.id %>

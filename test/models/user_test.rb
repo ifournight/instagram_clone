@@ -29,4 +29,14 @@ class UserTest < ActiveSupport::TestCase
     assert @user.reload.comments.include? comment
     assert post.reload.comments.include? comment
   end
+
+  test 'user like post' do
+    post = create_post
+
+    @user.like(post)
+    assert @user.like?(post)
+
+    @user.unlike(post)
+    assert_not @user.like?(post)
+  end
 end

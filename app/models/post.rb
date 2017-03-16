@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   # RELATIONS
   belongs_to :owner, class_name: 'User', foreign_key: 'user_id'
   has_many :comments
+  has_many :likes, class_name: 'LikeAction', foreign_key: 'post_id'
+
 
   # QUERYs
   default_scope -> { order(created_at: :desc) }
