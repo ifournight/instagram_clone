@@ -67,7 +67,8 @@
   &,
   &:hover,
   &:active,
-  &:focus {
+  &:focus,
+  &:visited {
     text-decoration: none;
     color: #000;
   }

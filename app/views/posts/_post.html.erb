@@ -3,7 +3,7 @@
   <header class="c-post__header u-padding-horizontal u-padding-vertical-small">
 
     <a class="c-post__avatar c-link--silence u-margin-right-small" href=<%="/#{post.owner.name}"%> >
-      <%= gravatar_for(post.owner, size: 40) %>
+      <%= gravatar_for(post.owner, size: 30) %>
     </a>
     <a class="c-post__owner c-link--silence" href=<%="/#{post.owner.name}" %> >
       <strong ><%= post.owner.name %></strong>
@@ -15,6 +15,19 @@
 
   <div class="c-post__body">
     <%= image_tag  post.picture.url, class_name: 'c-post__picture' %>
+  </div>
+
+  <div class="c-post__attr u-padding">
+    <div class="o-media o-media--small">
+      <div class="o-media__body">
+
+        <a class="c-link--silence" href=<%= "/#{post.owner.name}" %> >
+          <strong><%= post.owner.name %></strong>
+        </a>
+        <span><%= post.content %></span>
+
+      </div>
+    </div>
   </div>
 
   <footer class="u-padding-horizontal">

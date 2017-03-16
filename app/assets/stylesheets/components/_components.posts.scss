@@ -42,6 +42,10 @@ $post-width-default: 600px;
         flex: 0 1 auto;
 
       }
+
+      img {
+        border-radius: 50%;
+      }
     }
     
      .c-post__owner {

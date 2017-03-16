@@ -1,4 +1,4 @@
-<section class="u-margin-bottom c-navbar c-header">
+<section class="u-margin-bottom-large c-navbar c-header">
   
   <div class="c-navbar__item o-wrapper u-padding-vertical u-padding-horizontal-large">
 
@@ -14,12 +14,14 @@
 
     <div class="c-navbar__item c-navbar__item--align-right">
       <div class="c-navbar__item c-navbar__item--align-right o-list-inline">
-        <%= link_to '', root_path, class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__compass' %>
-        <%= link_to '', root_path, class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__activity' %>
-        <%= link_to '', "/#{current_user.name}", class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__profile' %>
         <% if user_signed_in? %>
-          <%= link_to  "登出", sign_out_path, method: :delete, class: 'o-list-inline__item c-link c-link--primary' %>
+          <%= link_to '', root_path, class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__compass' %>
+          <%= link_to '', root_path, class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__activity' %>
+          <%= link_to '', "/#{current_user.name}", class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__profile' %>
+        <% else %>
+          <%= link_to  "登录", sign_in_path, class: 'o-list-inline__item c-link c-link--primary' %>
         <% end %>
+
       </div>
     </div>
 

@@ -10,12 +10,15 @@
 
       <div class='c-user-profile__row'>
         <h1 class='c-user-profile__unit c-user-profile__username u-margin-right u-h2'><%= @user.name %></h1>
-        <% if current_user.id != @user.id %>
+        <% if user_signed_in? && current_user.id != @user.id %>
           <% if current_user.following?(@user) %>
             <%= button_to '取消关注', follow_users_path(followed_id: @user), method: :delete, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
           <% else %>
             <%= button_to  "正在关注", follow_users_path(followed_id: @user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
           <% end %>
+        <% end %>
+        <% if user_signed_in? && current_user.id == @user.id %>
+          <%= link_to  "登出", sign_out_path, method: :delete,  class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
         <% end %>
         <div class="c-icon-main c-icon-main__more-actions"></div>
       </div>
