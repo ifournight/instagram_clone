@@ -1,28 +1,27 @@
 class UsersController < ApplicationController
   # HOOKS
-  before_action :set_user, only: [:show, :followers, :following]
-  before_action :set_current_user, only: [:edit, :update, :password_change_new, :password_change]
+  skip_before_action   :authenticate_user!,   only: [:show]
+  before_action        :set_user,             only: [:show,             :followers,    :following]
+  before_action        :set_current_user,     only: [:account_edit_new, :account_edit, :password_change_new, :password_change]
   append_before_action :check_match_password, only: [:password_change]
-  skip_before_action :authenticate_user!, only: [:show]
 
   # GET /users/1
   # GET /users/1.json
   def show
   end
 
-  def edit
+  def account_edit_new
   end
 
-  def update
-    @user.update_attributes(user_params)
-    @user.save
+  def account_edit
+    @user.update_attributes(account_edit_params)
 
     respond_to do |format|
       if @user.save
         format.html { redirect_to request.referer || root_url, notice: 'User was successfully updated.' }
         format.json { render :update, status: :updated, location: @user }
       else
-        format.html { render :edit }
+        format.html { render :account_edit_new }
         # format.json { render json: @user.errors, status: :}
       end
     end
@@ -137,7 +136,8 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :website, :intro, :password, :password_confirmation)
     end
 
-    def edit_params
+    def account_edit_params
+      params.require(:user).permit(:name, :email)
     end
 
     def password_change_params

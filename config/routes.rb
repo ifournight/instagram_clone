@@ -17,8 +17,10 @@ Rails.application.routes.draw do
 
   get '/:name', to: 'users#show'
 
-  get '/:name/followers', to: 'users#followers', as: 'user_followers'
-  get '/:name/following', to: 'users#following', as: 'user_following'
+  get   '/:name/followers', to: 'users#followers',          as: 'user_followers'
+  get   '/:name/following', to: 'users#following',          as: 'user_following'
+  get   'account/edit',     to: 'users#account_edit_new',   as: 'account_edit_new'
+  patch 'account/edit',     to: 'users#account_edit',       as: 'account_edit'
 
   resources :users, only: [:edit, :update] do
     collection do

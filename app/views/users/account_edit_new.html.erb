@@ -1,0 +1,19 @@
+<h1>Editing User</h1>
+<%= form_for(@user, url: account_edit_path, method: :patch) do |f| %>
+
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit 'Submit' %>
+  </div>
+
+  <%= render 'shared/error_messages', object: @user %>
+<% end %>
