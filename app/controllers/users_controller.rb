@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
   # HOOKS
   before_action :set_user, only: [:show, :followers, :following]
-  before_action :set_current_user, only: [:edit, :update]
+  before_action :set_current_user, only: [:edit, :update, :password_change_new, :password_change]
+  append_before_action :check_match_password, only: [:password_change]
   skip_before_action :authenticate_user!, only: [:show]
 
   # GET /users/1
@@ -23,6 +24,28 @@ class UsersController < ApplicationController
       else
         format.html { render :edit }
         # format.json { render json: @user.errors, status: :}
+      end
+    end
+  end
+
+  # GET /users/:id/password_change
+  # Present a form to allow user to change password
+  def password_change_new
+
+  end
+
+  # POST /users/:id/password_change
+  # Change user's password.
+  # Success conditions:
+  # 1. User must provide current_password.
+  # 2. password and password confirmation must match.
+  def password_change
+    respond_to do |format|
+      if @user.update_with_password(password_change_params)
+        bypass_sign_in(@user)
+        format.html { redirect_to request.referer || root_url, notice: 'User password has been successfully updated.' }
+      else
+        format.html { render 'password_change_new' }
       end
     end
   end
@@ -112,5 +135,20 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :website, :intro, :password, :password_confirmation)
+    end
+
+    def edit_params
+    end
+
+    def password_change_params
+      params.require(:user).permit(:current_password, :password, :password_confirmation)
+    end
+
+    def check_match_password
+      if password_change_params[:password] != password_change_params[:password_confirmation]
+        @user.errors[:password_confirmation] << 'does not match password.'
+        render 'password_change_new'
+      end
+      true
     end
 end

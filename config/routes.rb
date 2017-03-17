@@ -29,6 +29,9 @@ Rails.application.routes.draw do
     member do
       post   :like, to: 'users#like'
       delete :like, to: 'users#unlike'
+
+      get  :password_change, to: 'users#password_change_new'
+      post :password_change, to: 'users#password_change'
     end
 
     resources :posts, only: [:new, :create]
