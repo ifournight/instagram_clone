@@ -1,0 +1,106 @@
+$account-edit-aside-width: 194px;
+
+.c-account-edit-card {
+  display: flex;
+  max-width: 1010px - 2 * $inuit-global-spacing-unit-large;
+  min-height: 600px;
+  margin: 0 auto;
+
+  background-color: white;
+  border: 1px solid $color-gray;
+  border-radius: 2px;
+}
+
+.c-account-edit__tabs {
+  flex: 0 0 236px;
+
+  border-right: 1px solid $color-gray;
+}
+
+  .c-account-edit_tab-item {
+
+    display: block;
+
+    border-left: 2px solid transparent;
+
+    padding: $inuit-global-spacing-unit-small;
+    padding-left: $inuit-global-spacing-unit;
+
+    @include inuit-font-size(16px);
+
+    color: #333;
+
+    &:hover,
+    &:active
+    &:focus {
+      background-color: $color-light-gray;
+      border-left-color: $color-gray;
+      cursor: pointer;
+    }
+  }
+
+  .c-account-edit_tab-item--actived {
+    border-left-color: black !important;
+    background-color: transparent !important;
+
+    color: black;
+    font-weight: 600;
+  }
+
+.c-account-edit {
+  display: flex;
+  flex: 1 1 400px;
+  min-width: 50px;
+  flex-direction: column;
+}
+
+  .c-account-edit__avatar-edit {
+    margin: $inuit-global-spacing-unit-large 0 $inuit-global-spacing-unit;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    img {
+      flex: 0 1 auto;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+
+      margin: 0 $inuit-global-spacing-unit-large 0 ($account-edit-aside-width - 38px - $inuit-global-spacing-unit-large);
+    }
+
+    h1 {
+      display: inline-block;
+      flex: 1 1 auto;
+    }
+  }
+
+.c-account-edit-form {
+}
+
+  .c-account-edit-form__field {
+    display: flex;
+
+    margin-bottom: 16px;
+  }
+
+  .c-account-edit-form__aside {
+    flex: 0 0 $account-edit-aside-width;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+    padding-right: $inuit-global-spacing-unit-large;
+  }
+
+  .c-account-edit-form__input {
+    flex: 1 1 355px;
+    padding-right: 60px;
+
+    display: flex;
+
+    input {
+      flex: 0 1 355px;
+    }
+  }

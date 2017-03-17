@@ -1,19 +1,43 @@
-<h1>Editing User</h1>
-<%= form_for(@user, url: account_edit_path, method: :patch) do |f| %>
+<section class="c-account-edit-card u-margin-bottom-large">
+  <aside class="c-account-edit__tabs o-list-bare">
+    <div clas="o-list-bare__item">
+      <%= link_to '编辑主页', account_edit_new_path, class: "c-link--silence c-account-edit_tab-item c-account-edit_tab-item--actived" %>
+    </div>
+    <div class="o-list-bare__item">
+      <%= link_to '更改密码', new_account_password_change_path, class: "c-link--silence c-account-edit_tab-item" %>
+    </div>
+  </aside>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
+  <article class="c-account-edit">
+
+  <div class="c-account-edit__avatar-edit">
+    <%= gravatar_for(current_user, size: 38) %>
+    <span class="u-h4"><%= current_user.name %></span>
   </div>
 
-  <div class="field">
-    <%= f.label :email %>
-    <%= f.text_field :email %>
-  </div>
+  <%= form_for(@user, url: account_edit_path, method: :patch, html: { class: 'c-form c-form--primary c-form--block o-wrapper c-account-edit-form' }) do |f| %>
+  
+    <div class="c-account-edit-form__field">
+      <div class="c-account-edit-form__aside"><%= f.label '用户名' %></div>
+      <div class="c-account-edit-form__input"><%= f.text_field :name, class: 'c-form__control' %></div>
+    </div>
+  
+    <div class="c-account-edit-form__field">
+      <div class="c-account-edit-form__aside"><%= f.label '邮箱' %></div>
+      <div class="c-account-edit-form__input"><%= f.text_field :email, class: 'c-form__control' %></div>
+    </div>
+  
+    <div class="c-account-edit-form__field">
+      <div class="c-account-edit-form__aside"></div>
+      <div><%= f.submit '提交', class: 'c-btn c-btn--small c-btn--primary' %></div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit 'Submit' %>
-  </div>
+    <div class="c-account-edit-form__field">
+      <div class="c-account-edit-form__aside"></div>
+      <%= render 'shared/error_messages', object: @user %>
+    </div>
+  
+  <% end %>
 
-  <%= render 'shared/error_messages', object: @user %>
-<% end %>
+  </article>
+</section>

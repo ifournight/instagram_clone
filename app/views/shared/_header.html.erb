@@ -1,6 +1,6 @@
 <section class="u-margin-bottom-large c-navbar c-header">
   
-  <div class="c-navbar__item o-wrapper u-padding-vertical u-padding-horizontal-large">
+  <div class="c-navbar__item c-header__inner u-padding-vertical u-padding-horizontal-large">
 
     <div class="c-navbar__item c-navbar__item--align-left c-navbar__item--important">
       <%= link_to '', root_path, class: 'c-icon-main c-icon-main__secondary' %>
@@ -17,7 +17,7 @@
         <% if user_signed_in? %>
           <%= link_to '', root_path, class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__compass' %>
           <%= link_to '', root_path, class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__activity' %>
-          <%= link_to '', "/#{current_user.name}", class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__profile' %>
+          <%= link_to '', "/#{current_user.name}", class: 'o-list-inline__item c-icon-main c-icon-main__profile' %>
         <% else %>
           <%= link_to  "登录", sign_in_path, class: 'o-list-inline__item c-link c-link--primary' %>
         <% end %>

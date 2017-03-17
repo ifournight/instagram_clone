@@ -10,6 +10,10 @@ $navbar-height-primary: 77px;
   border-bottom: 1px solid $color-gray;
 }
 
+  .c-header__inner {
+    max-width: 1010px;
+  }
+
 .c-navbar {
   display: flex;
 
