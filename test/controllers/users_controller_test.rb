@@ -80,8 +80,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   # end
 
   test 'should fail when provide empty current password when change password' do
-    get password_change_user_path(@user)
-    post password_change_user_path(
+    get new_account_password_change_path(@user)
+    post account_password_change_path(
       params: {
         id: @user.id,
         user: {
@@ -100,8 +100,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should fail when password and confirmation doesn't match while changing password" do
-    get password_change_user_url(@user)
-    post password_change_user_path(
+    get new_account_password_change_path(@user)
+    post account_password_change_path(
       params: {
         id: @user.id,
         user: {
@@ -120,9 +120,9 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should change password with valid params' do
-    get password_change_user_url(@user)
+    get new_account_password_change_path(@user)
 
-    post password_change_user_path(
+    post account_password_change_path(
       params: {
         id: @user.id,
         user: {

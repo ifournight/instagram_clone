@@ -15,12 +15,15 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'users/sessions#destroy'
   end
 
-  get '/:name', to: 'users#show'
+  get   '/:name',                  to: 'users#show'
 
-  get   '/:name/followers', to: 'users#followers',          as: 'user_followers'
-  get   '/:name/following', to: 'users#following',          as: 'user_following'
-  get   'account/edit',     to: 'users#account_edit_new',   as: 'account_edit_new'
-  patch 'account/edit',     to: 'users#account_edit',       as: 'account_edit'
+  get   '/:name/followers',        to: 'users#followers',           as: 'user_followers'
+  get   '/:name/following',        to: 'users#following',           as: 'user_following'
+  get   'account/edit',            to: 'users#account_edit_new',    as: 'account_edit_new'
+  patch 'account/edit',            to: 'users#account_edit',        as: 'account_edit'
+  get   'account/password/change', to: 'users#password_change_new', as: 'new_account_password_change'
+  post  'account/password/change', to: 'users#password_change',     as: 'account_password_change'
+
 
   resources :users, only: [:edit, :update] do
     collection do
@@ -31,9 +34,6 @@ Rails.application.routes.draw do
     member do
       post   :like, to: 'users#like'
       delete :like, to: 'users#unlike'
-
-      get  :password_change, to: 'users#password_change_new'
-      post :password_change, to: 'users#password_change'
     end
 
     resources :posts, only: [:new, :create]
