@@ -1,11 +1,30 @@
 class UsersController < ApplicationController
   # HOOKS
   before_action :set_user, only: [:show, :followers, :following]
+  before_action :set_current_user, only: [:edit, :update]
   skip_before_action :authenticate_user!, only: [:show]
 
   # GET /users/1
   # GET /users/1.json
   def show
+  end
+
+  def edit
+  end
+
+  def update
+    @user.update_attributes(user_params)
+    @user.save
+
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to request.referer || root_url, notice: 'User was successfully updated.' }
+        format.json { render :update, status: :updated, location: @user }
+      else
+        format.html { render :edit }
+        # format.json { render json: @user.errors, status: :}
+      end
+    end
   end
 
   # POST /users
@@ -60,7 +79,7 @@ class UsersController < ApplicationController
       @user.like(@post)
       @user = @user.reload
     end
-    
+
     redirect_to request.referer || root_url
   end
 
@@ -74,7 +93,7 @@ class UsersController < ApplicationController
     else
       @user.errors[:base] << "repeat unlike."
     end
-    
+
     redirect_to request.referer || root_url
   end
 
@@ -83,6 +102,11 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find_by(name: params[:name])
+    end
+
+    # set current signed in user to @user
+    def set_current_user
+      @user = current_user
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

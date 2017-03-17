@@ -5,7 +5,17 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = create_user({ name: 'ifournight', email: 'ifournight@gmail.com', encrypted_password: Devise::Encryptor.digest(User, 'codebone'), confirmed_at: Time.zone.now, sign_in_count: 0 })
   end
-  
+
+  test 'user name must not be blank' do
+    assert @user.persisted?
+
+    @user.name = ''
+    assert @user.invalid?
+
+    @user.name = ' '
+    assert @user.invalid?
+  end
+
   test 'following relationship' do
     other = create_user
     @user.follow(other)

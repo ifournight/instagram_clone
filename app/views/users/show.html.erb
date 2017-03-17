@@ -19,6 +19,8 @@
         <% end %>
         <% if user_signed_in? && current_user.id == @user.id %>
           <%= link_to  "登出", sign_out_path, method: :delete,  class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
+          <%= link_to  "编辑用户", edit_user_path(current_user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
+          <%= link_to  "重设密码", new_password_path(current_user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
         <% end %>
         <div class="c-icon-main c-icon-main__more-actions"></div>
       </div>

@@ -28,6 +28,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
+  # VALIDATIONS
+  validates :name, presence: true
+
   # Follow a user
   def follow(other_user)
     following << other_user
