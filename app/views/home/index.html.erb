@@ -2,8 +2,13 @@
   <p>你还没有验证你的邮箱</p>
 <% end %>
 
-<section class="u-margin-bottom-large o-wrapper c-post-list c-post-list--main" data-ui-component="post-list-main">
+<section class="u-margin-bottom-large o-wrapper c-post-list c-post-list--main" id="post-list" data-ui-component="post-list-main">
   
-  <%= render current_user.post_feeds %>
+  <%= render @feeds %>
+
 
 </section>
+
+<div class="pagination u-align-center u-margin-bottom u-not-visible">
+  <%= link_to_next_page(@feeds, '更多', remote: true, class: 'c-btn c-btn--primary c-btn--small o-wrapper') %>
+</div>

@@ -36,6 +36,8 @@ gem 'devise'
 # User CarrierWave for picture uploader
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '4.5.1'
+gem 'kaminari'
+gem 'jquery-infinite-pages'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
