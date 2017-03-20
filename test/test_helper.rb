@@ -7,6 +7,7 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
   include ActionDispatch::TestProcess
+
   # Add more helper methods to be used by all tests here...
   def extract_activation_token(text)
     activation_token = ''
@@ -40,6 +41,12 @@ class ActiveSupport::TestCase
     "test#{@@name_count}"
   end
 
+  def generate_unique_post_content
+    @@post_count ||= 0
+    @@post_count += 1
+    "blabla_#{@@post_count}"
+  end
+
   def valid_attributes(attributes={})
     { name: generate_unique_name,
       email: generate_unique_email,
@@ -48,7 +55,7 @@ class ActiveSupport::TestCase
   end
 
   def new_user(attributes={})
-    User.new(valid_attributes(attributes))  
+    User.new(valid_attributes(attributes))
   end
 
   def create_user(attributes={})
@@ -72,7 +79,7 @@ class ActiveSupport::TestCase
   end
 
   def valid_post_attributes(attributes={})
-    { content: 'blabla',
+    { content: generate_unique_post_content,
       picture: generate_picture,
       user_id: create_user.id}.update(attributes)
   end
