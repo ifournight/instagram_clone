@@ -39,27 +39,18 @@
 
   </header>
 
-  <main class="c-user-posts u-margin-vertical-large">
-    <% @user.posts.each.with_index do |post, index| %>
-      <% if index % 3 == 0 %>
-        <div class="c-users-posts__row u-margin-bottom">
-      <% end %>
+  <section>
 
-      <%= render 'posts/post_users', post: post %>
+    <main class="c-user-posts u-margin-vertical-large" id="posts-user">
 
-      <% if index == @user.posts.count - 1 && @user.posts.count % 3 != 0 %>
+      <%= render 'posts/grid_posts', posts: @posts %>
 
-        <% (3 - @user.posts.count % 3).times do %>
-          <%= render 'posts/empty_post_users' %>
-        <% end %>
+    </main>
 
-      <% end %>
+    <div class="pagination u-align-center u-margin-bottom">
+      <%= link_to_next_page(@posts, '更多', remote: true, class: 'c-btn c-btn--primary c-btn--small o-wrapper') %>
+    </div>
 
-      <% if index % 3 == 2 %>
-        </div>
-      <% end %>
+  </section>
 
-    <% end %>
-
-  </main>
 </article>

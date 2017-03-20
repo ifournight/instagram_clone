@@ -1,0 +1,21 @@
+<% posts.each.with_index do |post, index| %>
+
+  <% if index % 3 == 0 %>
+    <div class="c-users-posts__row u-margin-bottom">
+  <% end %>
+
+  <%= render 'posts/post_users', post: post %>
+
+  <% if index == posts.count - 1 && posts.count % 3 != 0 %>
+
+    <% (3 - posts.count % 3).times do %>
+      <%= render 'posts/empty_post_users' %>
+    <% end %>
+
+  <% end %>
+
+  <% if index % 3 == 2 %>
+    </div>
+  <% end %>
+
+<% end %>

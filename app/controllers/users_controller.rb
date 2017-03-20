@@ -8,6 +8,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @posts = @user.posts.page( params[:page] ).per(9)
+
+    respond_to do |format|
+      format.html { render :show }
+      format.js { render :show }
+    end
+
   end
 
   def account_edit_new

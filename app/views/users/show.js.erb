@@ -1,0 +1,8 @@
+$("#posts-user").append("<%= j render('posts/grid_posts', posts: @posts) %>");
+
+// Update pagination link
+<% if @posts.last_page? %>
+  $('.pagination').html("");
+<% else %>
+  $('.pagination').html("<%=j(link_to_next_page(@posts, '更多', remote: true, class: 'c-btn c-btn--primary c-btn--small o-wrapper')) %>");
+<% end %>
