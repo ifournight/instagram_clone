@@ -33,9 +33,10 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 # Use Devise for authentication
 gem 'devise'
-# User CarrierWave for picture uploader
+# Use CarrierWave for picture uploader
 gem 'carrierwave', '~> 1.0'
 gem 'mini_magick', '4.5.1'
+# User karimari and infinite-pages for pagination
 gem 'kaminari'
 gem 'jquery-infinite-pages'
 
