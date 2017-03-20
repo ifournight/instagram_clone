@@ -47,9 +47,11 @@
 
     </main>
 
-    <div class="pagination u-align-center u-margin-bottom">
-      <%= link_to_next_page(@posts, '更多', remote: true, class: 'c-btn c-btn--primary c-btn--small o-wrapper') %>
-    </div>
+    <% unless @posts.last_page? %>
+      <div class="pagination u-align-center u-margin-bottom">
+        <%= link_to_next_page(@posts, '更多', remote: true, class: 'c-btn c-btn--primary c-btn--small o-wrapper') %>
+      </div>
+    <% end %>
 
   </section>
 
