@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :set_locale
   before_action :authenticate_user!
 
   layout :dynamic_layout
@@ -23,5 +24,10 @@ class ApplicationController < ActionController::Base
   # Overwriting the sign_out redirect path method
   def after_sign_out_path_for(resource_or_scope)
     sign_in_path
+  end
+
+  # Set locale based on locale in params hash
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
   end
 end
