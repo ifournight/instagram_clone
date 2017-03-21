@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   patch 'account/edit',            to: 'users#account_edit',        as: 'account_edit'
   get   'account/password/change', to: 'users#password_change_new', as: 'new_account_password_change'
   post  'account/password/change', to: 'users#password_change',     as: 'account_password_change'
+  post  'set_locale', to: 'home#set_locale', as: 'set_locale'
 
 
   resources :users, only: [:edit, :update] do

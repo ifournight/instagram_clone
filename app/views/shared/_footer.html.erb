@@ -11,9 +11,13 @@
       <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.privacy').upcase %></small></a>
       <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.terms').upcase %></small></a>
       <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.directory').upcase %></small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.language').upcase %></small></a>
+      <li class="o-list-inline__item">
+        <%= form_tag(set_locale_path, method: :post) do %>
+          <%= select_tag 'locale', options_for_select(I18n.available_locales) %>
+          <%= submit_tag("set language") %>
+        <% end %>
+      </li>
     </div>
-
     <div class="u-text-color-notice c-navbar__item--align-right">
       <strong>© 2017 INSTAGRAM</strong>
     </div>

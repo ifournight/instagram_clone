@@ -28,6 +28,6 @@ class ApplicationController < ActionController::Base
 
   # Set locale based on locale in params hash
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    I18n.locale = cookies[:locale] || params[:locale] || I18n.default_locale
   end
 end
