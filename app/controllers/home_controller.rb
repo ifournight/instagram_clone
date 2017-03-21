@@ -12,7 +12,7 @@ class HomeController < ApplicationController
 
   def set_locale
     if locale_param
-      cookies[:locale] = locale_param
+      cookies[:locale] = {value: locale_param, expires: 1.hour.from_now }
       respond_to do |format|
         format.html { redirect_to request.referer || root_url }
       end
