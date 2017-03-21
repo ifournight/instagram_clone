@@ -1,8 +1,8 @@
 
 <section class="o-wrapper">
-  
+
   <section class="o-wrapper c-card c-card--primary u-margin-bottom-large">
-    <h2 class="u-margin-small u-h6">正在关注</h2>
+    <h2 class="u-margin-small u-h6"><%= t('app.following') %></h2>
     <% @user.following.each do |user| %>
 
       <article class="o-media o-media-small u-padding-small">
@@ -17,9 +17,9 @@
 
           <% if user_signed_in? && current_user.id != user.id %>
             <% if current_user.following?(user) %>
-              <%= button_to  "取消关注", follow_users_path(followed_id: user), method: :delete, class: 'c-btn c-btn--small c-btn--secondary' %>
+              <%= button_to  t('app.unfollow'), follow_users_path(followed_id: user), method: :delete, class: 'c-btn c-btn--small c-btn--secondary' %>
             <% else %>
-              <%= button_to  "关注", follow_users_path(followed_id: user), method: :post, class: 'c-btn c-btn--small c-btn--primary' %>
+              <%= button_to  t('app.follow'), follow_users_path(followed_id: user), method: :post, class: 'c-btn c-btn--small c-btn--primary' %>
             <% end %>
           <% end %>
 

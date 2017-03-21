@@ -21,17 +21,7 @@
     <% if post.likes.any? %>
       <div class="o-media o-media--small">
         <div class="o-media__body">
-        
-          <% if post.likes.count < 10 %>
-            <% s= post.likes.inject('') do |sum, like| %>
-              <% separator = like == post.likes.last ? "" : ", " %>
-              <% sum += "#{like.user.name}#{separator}" %>
-            <% end %>
-            <strong><%= s %> 赞了</strong>
-          <% else %>
-            <strong><%= post.likes.count %> 个赞</strong>
-          <% end %>
-
+          <strong><%= t 'app.like_desc', count: post.likes.count %></strong>
         </div>
       </div>
     <% end %>

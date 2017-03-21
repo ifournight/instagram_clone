@@ -2,22 +2,22 @@
   <%= render 'shared/error_messages', object: user %>
 
   <div class="field">
-    <%= f.text_field :email, placeholder: '邮箱' %>
-  </div>
-  
-  <div class="field">
-    <%= f.text_field :name, placeholder: '账号' %>
+    <%= f.text_field :email, placeholder: User.human_attribute_name(:email) %>
   </div>
 
   <div class="field">
-    <%= f.password_field :password, placeholder: '密码' %>
+    <%= f.text_field :name, placeholder: User.human_attribute_name(:name) %>
   </div>
 
   <div class="field">
-    <%= f.password_field :password_confirmation, placeholder: '密码确认' %>
+    <%= f.password_field :password, placeholder: User.human_attribute_name(:password) %>
+  </div>
+
+  <div class="field">
+    <%= f.password_field :password_confirmation, User.human_attribute_name(:password_confirmation) %>
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit t 'app.submit' %>
   </div>
 <% end %>

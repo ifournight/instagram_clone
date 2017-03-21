@@ -10,9 +10,9 @@
 
   <%= form_for( post.comments.build, url: post_comments_path(post, user_id: current_user.id), html: { class: 'c-post__new-comment c-form c-form--primary'}) do |f| %>
 
-    <%= f.text_field :content, placeholder: '添加评论...', class: 'c-form__control c-form__control--bare' %>
+    <%= f.text_field :content, placeholder: "#{t('app.comment_post')} ...", class: 'c-form__control c-form__control--bare' %>
 
-    <%= f.submit '提交', class: 'c-btn c-btn--primary c-btn--small'     %>
+    <%= f.submit t('app.submit'), class: 'c-btn c-btn--primary c-btn--small'     %>
   <% end %>
 
   <div class="c-icon-main c-icon-main__more-actions"></div>

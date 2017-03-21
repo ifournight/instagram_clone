@@ -1,0 +1,26 @@
+zh-CN:
+  activerecord:
+    models:
+      user:
+        one: 用户
+        other: 用户
+      post:
+        one: 投稿
+        other: 投稿
+    attributes:
+      user:
+        name: 用户名
+        email: 用户邮箱
+        password: 密码
+        password_confirmation: 密码确认
+        current_password: 当前密码
+        created_at: 创建时间
+        updated_at: 最近修改时间
+      post:
+        user_id: 用户id
+        content: 主题
+        picture: 照片
+      comment:
+        content: 内容
+        user_id: 用户id
+        post_id: 投稿id

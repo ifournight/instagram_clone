@@ -2,18 +2,27 @@
 
   <div class="o-wrapper c-navbar__item u-padding-horizontal-large">
     <div class="o-list-inline c-navbar__item c-navbar__item--align-left">
-      <a class="o-list-inline__item u-padding-right-tiny"><small>关于我们</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>支持</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>博客</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>新闻中心</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>API</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>工作</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>隐私</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>条款</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>目录</small></a>
-      <a class="o-list-inline__item u-padding-right-tiny"><small>语言</small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.about_us').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.support').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.blog').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.press').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.api').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.jobs').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.privacy').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.terms').upcase %></small></a>
+      <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.directory').upcase %></small></a>
+      <a class="o-list-inline__item c-language">
+        <small><%= t('app.language').upcase %></small>
+        <%= form_tag(set_locale_path, method: :post, class: 'c-form c-language-select') do %>
+          <select name='locale' id="locale" class="c-form__control" onChange="this.form.submit()">
+            <option value="" disabled selected>Select language</option>
+            <% I18n.available_locales.each do |locale| %>
+              <option value=<%= locale %> > <%= t locale %> </<option>
+            <% end %>
+          </select>
+        <% end %>
+      </a>
     </div>
-    
     <div class="u-text-color-notice c-navbar__item--align-right">
       <strong>© 2017 INSTAGRAM</strong>
     </div>
