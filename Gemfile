@@ -39,6 +39,8 @@ gem 'mini_magick', '4.5.1'
 # User karimari and infinite-pages for pagination
 gem 'kaminari'
 gem 'jquery-infinite-pages'
+# Use http_accept_language for localization determination
+gem 'http_accept_language'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
