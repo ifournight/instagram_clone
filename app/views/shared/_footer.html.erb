@@ -11,12 +11,17 @@
       <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.privacy').upcase %></small></a>
       <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.terms').upcase %></small></a>
       <a class="o-list-inline__item u-padding-right-tiny"><small><%= t('app.directory').upcase %></small></a>
-      <li class="o-list-inline__item">
-        <%= form_tag(set_locale_path, method: :post) do %>
-          <%= select_tag 'locale', options_for_select(I18n.available_locales) %>
-          <%= submit_tag("set language") %>
+      <a class="o-list-inline__item c-language">
+        <small><%= t('app.language').upcase %></small>
+        <%= form_tag(set_locale_path, method: :post, class: 'c-form c-language-select') do %>
+          <select name='locale' id="locale" class="c-form__control" onChange="this.form.submit()">
+            <option value="" disabled selected>Select language</option>
+            <% I18n.available_locales.each do |locale| %>
+              <option value=<%= locale %> > <%= t locale %> </<option>
+            <% end %>
+          </select>
         <% end %>
-      </li>
+      </a>
     </div>
     <div class="u-text-color-notice c-navbar__item--align-right">
       <strong>© 2017 INSTAGRAM</strong>
