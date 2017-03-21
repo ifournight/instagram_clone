@@ -7,12 +7,12 @@
     <%= form_for(:user, url: sign_in_path, html: {class: 'c-form c-form--block c-form--primary u-padding-horizontal-large u-margin-bottom'}) do |f| %>
 
       <div class="c-form__field">
-        <%= f.email_field :email, class: 'c-form__control', autofocus: true, placeholder: '邮箱' %>
+        <%= f.email_field :email, class: 'c-form__control', autofocus: true, placeholder: User.human_attribute_name(:email) %>
       </div>
 
       <div class="c-form__field">
-        <%= f.password_field :password, class: 'c-form__control', autofocus: true, placeholder: '密码确认' %>
-      </div>     
+        <%= f.password_field :password, class: 'c-form__control', autofocus: true, placeholder: User.human_attribute_name(:password) %>
+      </div>
 
       <div class="c-form__field">
         <%= f.submit "登录", class: 'c-form__field c-btn c-btn--small c-btn--primary'%>

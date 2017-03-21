@@ -16,17 +16,17 @@
   </div>
 
   <%= form_for(@user, url: account_edit_path, method: :patch, html: { class: 'c-form c-form--primary c-form--block o-wrapper c-account-edit-form' }) do |f| %>
-  
+
     <div class="c-account-edit-form__field">
-      <div class="c-account-edit-form__aside"><%= f.label '用户名' %></div>
-      <div class="c-account-edit-form__input"><%= f.text_field :name, class: 'c-form__control' %></div>
+      <div class="c-account-edit-form__aside"><%= f.label User.human_attribute_name(:name) %></div>
+      <div class="c-account-edit-form__input"><%= f.text_field :name, class: 'c-form__control', placeholder: User.human_attribute_name(:name)%></div>
     </div>
-  
+
     <div class="c-account-edit-form__field">
-      <div class="c-account-edit-form__aside"><%= f.label '邮箱' %></div>
-      <div class="c-account-edit-form__input"><%= f.text_field :email, class: 'c-form__control' %></div>
+      <div class="c-account-edit-form__aside"><%= f.label User.human_attribute_name(:email) %></div>
+      <div class="c-account-edit-form__input"><%= f.text_field :email, class: 'c-form__control', placeholder: User.human_attribute_name(:email) %></div>
     </div>
-  
+
     <div class="c-account-edit-form__field">
       <div class="c-account-edit-form__aside"></div>
       <div><%= f.submit '提交', class: 'c-btn c-btn--small c-btn--primary' %></div>
@@ -36,7 +36,7 @@
       <div class="c-account-edit-form__aside"></div>
       <%= render 'shared/error_messages', object: @user %>
     </div>
-  
+
   <% end %>
 
   </article>
