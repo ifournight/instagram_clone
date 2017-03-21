@@ -5,7 +5,7 @@
 
     <h1 class="o-wrapper u-margin-top u-margin-bottom-tiny c-icon-main c-icon-main__primary"></h1>
 
-    <h6 class="u-text-color-dark-gray">注册 Instagram, 分享精彩视界</h6>
+    <h6 class="u-text-color-dark-gray"><%= t 'app.slogan' %></h6>
 
     <%= form_for(:user, url: sign_up_path, html: {class: 'c-form c-form--block c-form--primary u-padding-horizontal-large u-margin-bottom'}) do |f| %>
 
@@ -23,7 +23,7 @@
       </div>
 
       <div class="c-form__field">
-        <%= f.submit "注册", class: 'c-form__field c-btn c-btn--small c-btn--primary'%>
+        <%= f.submit t('app.sign_up'), class: 'c-form__field c-btn c-btn--small c-btn--primary'%>
       </div>
 
       <%= render 'shared/error_messages', object: @user %>
@@ -34,15 +34,14 @@
     <% end %>
 
     <div class="o-wrapper--small">
-      <p class="o-wrapper u-padding-horizontal-large u-text-color-dark-gray">注册即表示你同意我们的 <a class="c-link c-link--notice"><strong>条款</strong></a> 和
-        <a class="c-link c-link--notice"> <strong>隐私权限政策</strong></a>。</p>
+      <p class="o-wrapper u-padding-horizontal-large u-text-color-dark-gray"><%= t 'app.sign_up_notice'%></p>
     </div>
 
   </article>
 
 
-  <div class="u-align-center o-wrapper c-card c-card--primary u-padding">
-    <span>有账户了？<%= link_to  "请登录", sign_in_path, class: 'c-link c-link--primary'%></span>
+  <div class="u-align-center o-wrapper c-card c-card--primary c-card--small u-padding">
+    <span><%= t 'app.have_an_account?'%> <%= link_to  t('app.please_sign_in'), sign_in_path, class: 'c-link c-link--primary'%></span>
   </div>
 
 </section>

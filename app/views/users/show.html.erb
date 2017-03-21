@@ -12,25 +12,25 @@
         <h1 class='c-user-profile__unit c-user-profile__username u-margin-right u-h2'><%= @user.name %></h1>
         <% if user_signed_in? && current_user.id != @user.id %>
           <% if current_user.following?(@user) %>
-            <%= button_to '取消关注', follow_users_path(followed_id: @user), method: :delete, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
+            <%= button_to t('app.unfollow'), follow_users_path(followed_id: @user), method: :delete, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
           <% else %>
-            <%= button_to  "关注用户", follow_users_path(followed_id: @user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
+            <%= button_to  t('app.follow'), follow_users_path(followed_id: @user), class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit', form_class: 'c-user-profile__unit'%>
           <% end %>
         <% end %>
         <% if user_signed_in? && current_user.id == @user.id %>
-          <%= link_to  "登出", sign_out_path, method: :delete,  class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit u-margin-right-small' %>
-          <%= link_to  "编辑用户", account_edit_new_path, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
+          <%= link_to  t('app.sign_out'), sign_out_path, method: :delete,  class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit u-margin-right-small' %>
+          <%= link_to  t('app.user_profile.edit_profile'), account_edit_new_path, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
         <% end %>
       </div>
 
       <ul class='c-user-profile__row'>
 
-        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>已发帖 <%= @user.posts.count %></li>
+        <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'><%= t('app.user_profile.posts_desc', count: @user.posts.count) %></li>
         <a class="c-link c-link--silence" href=<%= user_followers_path(name: @user.name) %> >
-          <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'><%= @user.followers.count %> 人关注</li>
+          <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'><%= t('app.user_profile.followers_desc', count: @user.followers.count) %></li>
         </a>
         <a class="c-link c-link--silence" href=<%= user_following_path(name: @user.name) %> >
-          <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'>正在关注 <%= @user.following.count %></li>
+          <li class='o-list-inline__item c-user-profile__unit u-h6 u-margin-right-large'><%= t('app.user_profile.following_desc', count: @user.following.count) %></li>
         </a>
 
       </ul>
@@ -48,7 +48,7 @@
     </main>
 
     <div class="pagination u-align-center u-margin-bottom">
-      <%= link_to_next_page(@posts, '更多', remote: true, class: 'c-btn c-btn--primary c-btn--small o-wrapper') %>
+      <%= link_to_next_page(@posts, t('app.loadmore'), remote: true, class: 'c-btn c-btn--primary c-btn--small o-wrapper') %>
     </div>
 
   </section>

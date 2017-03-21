@@ -1,5 +1,5 @@
 <section class="u-margin-bottom-large c-navbar c-header">
-  
+
   <div class="c-navbar__item c-header__inner u-padding-vertical u-padding-horizontal-large">
 
     <div class="c-navbar__item c-navbar__item--align-left c-navbar__item--important">
@@ -8,7 +8,7 @@
 
     <div class="c-navbar__item c-navbar__item--not-so-important">
       <form class="c-navbar__item c-form c-form--primary">
-        <input class="c-form__control" type="search" placeholder="搜索..." />
+        <input class="c-form__control" type="search" placeholder=<%= t('app.search') + " ..." %> />
       </form>
     </div>
 
@@ -19,7 +19,7 @@
           <%= link_to '', root_path, class: 'u-margin-right o-list-inline__item c-icon-main c-icon-main__activity' %>
           <%= link_to '', "/#{current_user.name}", class: 'o-list-inline__item c-icon-main c-icon-main__profile' %>
         <% else %>
-          <%= link_to  "登录", sign_in_path, class: 'o-list-inline__item c-link c-link--primary' %>
+          <%= link_to t('app.sign_in'), sign_in_path, class: 'o-list-inline__item c-link c-link--primary' %>
         <% end %>
 
       </div>
