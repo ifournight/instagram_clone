@@ -19,7 +19,7 @@
         <% end %>
         <% if user_signed_in? && current_user.id == @user.id %>
           <%= link_to  t('app.sign_out'), sign_out_path, method: :delete,  class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit u-margin-right-small' %>
-          <%= link_to  t('app.user_profile.edit_profile'), account_edit_new_path, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
+          <%= link_to  t('app.user_profile.edit_profile'), new_account_edit_path, class: 'c-btn c-btn--small c-btn--secondary c-user-profile__unit' %>
         <% end %>
       </div>
 

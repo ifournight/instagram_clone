@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   # HOOKS
   skip_before_action   :authenticate_user!,   only: [:show]
   before_action        :set_user,             only: [:show,             :followers,    :following]
-  before_action        :set_current_user,     only: [:account_edit_new, :account_edit, :password_change_new, :password_change]
+  before_action        :set_current_user,     only: [:password_change_new, :password_change]
   append_before_action :check_match_password, only: [:password_change]
 
   # GET /users/1
@@ -15,23 +15,6 @@ class UsersController < ApplicationController
       format.js { render :show }
     end
 
-  end
-
-  def account_edit_new
-  end
-
-  def account_edit
-    @user.update_attributes(account_edit_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to request.referer || root_url, notice: 'User was successfully updated.' }
-        format.json { render :update, status: :updated, location: @user }
-      else
-        format.html { render :account_edit_new }
-        # format.json { render json: @user.errors, status: :}
-      end
-    end
   end
 
   # GET /users/:id/password_change
@@ -130,7 +113,7 @@ class UsersController < ApplicationController
 
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      @user = User.find_by(name: params[:name])
+      @user = User.find_by(name: params[:name]) || current_user
     end
 
     # set current signed in user to @user
@@ -141,10 +124,6 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:name, :email, :website, :intro, :password, :password_confirmation)
-    end
-
-    def account_edit_params
-      params.require(:user).permit(:name, :email)
     end
 
     def password_change_params

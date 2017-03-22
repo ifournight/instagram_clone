@@ -19,8 +19,6 @@ Rails.application.routes.draw do
 
   get   '/:name/followers',        to: 'users#followers',           as: 'user_followers'
   get   '/:name/following',        to: 'users#following',           as: 'user_following'
-  get   'account/edit',            to: 'users#account_edit_new',    as: 'account_edit_new'
-  patch 'account/edit',            to: 'users#account_edit',        as: 'account_edit'
   get   'account/password/change', to: 'users#password_change_new', as: 'new_account_password_change'
   post  'account/password/change', to: 'users#password_change',     as: 'account_password_change'
   post  'set_locale', to: 'home#set_locale', as: 'set_locale'
@@ -39,6 +37,8 @@ Rails.application.routes.draw do
 
     resources :posts, only: [:new, :create]
   end
+
+  resources :account_edits, only: [:new, :create]
 
   resources :posts, only: [:update, :destroy] do
     resources :comments, only: [:new, :create]
