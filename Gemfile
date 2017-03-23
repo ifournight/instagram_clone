@@ -68,6 +68,12 @@ group :test do
   gem 'rails-controller-testing'
 end
 
+group :production do
+  gem "fog-google"
+  gem "google-api-client", ">= 0.6.2", "< 0.9"
+  gem "mime-types"
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
