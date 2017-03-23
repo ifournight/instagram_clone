@@ -12,7 +12,7 @@ if Rails.env.production?
       provider: 'Google',
       google_project: ENV['GCLOUD_GOOGLE_PROJECT'],
       google_client_email: ENV['GCLOUD_CLIENT_EMAIL'],
-      google_json_key_location: Rails.root.join('.fog/key.json')
+      google_json_key_location: Rails.root.join('config/fog_google_key.json')
     }
     config.fog_directory = ENV['GCLOUD_BUCKET']
   end
