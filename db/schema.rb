@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 20170316060004) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.string   "content",    default: "", null: false
     t.integer  "user_id"
     t.integer  "post_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "follow_actions", force: :cascade do |t|
@@ -27,9 +30,9 @@ ActiveRecord::Schema.define(version: 20170316060004) do
     t.integer  "followed_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.index ["followed_id"], name: "index_follow_actions_on_followed_id"
-    t.index ["follower_id", "followed_id"], name: "index_follow_actions_on_follower_id_and_followed_id", unique: true
-    t.index ["follower_id"], name: "index_follow_actions_on_follower_id"
+    t.index ["followed_id"], name: "index_follow_actions_on_followed_id", using: :btree
+    t.index ["follower_id", "followed_id"], name: "index_follow_actions_on_follower_id_and_followed_id", unique: true, using: :btree
+    t.index ["follower_id"], name: "index_follow_actions_on_follower_id", using: :btree
   end
 
   create_table "like_actions", force: :cascade do |t|
@@ -37,9 +40,9 @@ ActiveRecord::Schema.define(version: 20170316060004) do
     t.integer  "post_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_like_actions_on_post_id"
-    t.index ["user_id", "post_id"], name: "index_like_actions_on_user_id_and_post_id"
-    t.index ["user_id"], name: "index_like_actions_on_user_id"
+    t.index ["post_id"], name: "index_like_actions_on_post_id", using: :btree
+    t.index ["user_id", "post_id"], name: "index_like_actions_on_user_id_and_post_id", using: :btree
+    t.index ["user_id"], name: "index_like_actions_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 20170316060004) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.string   "picture",    default: "", null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -69,10 +72,10 @@ ActiveRecord::Schema.define(version: 20170316060004) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["name"], name: "index_users_on_name", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
+    t.index ["name"], name: "index_users_on_name", unique: true, using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
 end
