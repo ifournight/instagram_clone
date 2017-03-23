@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "instagram-clone-162402",
+  "private_key_id": "ff720a43b568d8ad01034d9785406c0e78c16382",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCfLAwU5r1tD+jm\nHJzeY81g0x+g2oFKiCWiD6pccKBUYf2A2xwtD+wTh9dpPAwRx37gmikf3ufwFA5i\nE8gU8DuCOA1yJM3LWqHJKQ+7FOwU3qpjIsIbiPN0A/2Vy23VepgY+vZXSBubo5Pd\n+sidBzwHb9EL4b7lNP9Iz/XoITU6N1vSQUgLsc/4BxaccnBTfYJzjWXfG+8DS4kS\njJggJJw2tB0Sq5FOX+kQCBfQCyuLGh6edBF3VRWbBleLbl0EZAGEaN7SgAyILqfi\nh4R9xcHSAr+i5V2n6P3j+iZk3Rbdp94/P0XXx1bXAJxib2vT523fx8yY+cTw0nns\nGki6bOUlAgMBAAECggEAFQDy9y8bf/DBgtvzt0TkLQqu+cLbnMIqdSAsEtap0Xi8\nwuwm46teM5WRT0mlLhNtIqY1FweLA5sh6r9Bf8HTmHNdEtrYbSUghDLu6HjyTi6z\nvTEw/AEuXvjH1aRqcekjeOhk6U+SlQ8YzAnzvwTdXv3aT/8R+Zzssub+RAtdwrim\nFqskgd1OTC8g9vGSHZvhviW855l1D/LomZqtFr+d9qsQx08fHmFmd2EGh3w0cGIU\nAdmCvaBvT7DAg86lNsDZypg0lQEjxuuxuWd1AT0PLx4dybSGlM5aEY7KM6GM+8MZ\n7/BFQqmNT0YYUJDxhTfYJnG3gY4Y+s9rspeTKqNhYQKBgQDLGo9lePUKIPT3KhxX\n9nR6VzKggw+FzqzYCuJaHXrhxhIIYLoU9ByeMxOc8bh5lqMlLnI3lyi+tA9xqRk5\n7EWYTKxPtkhTXLgzBpnYxHfeIX4sRND+JIyNo/ItfbhXjQaGN/emyeTfKrHTqTkN\nUA77Exu2oxxkOQSd8SOggJ6KiwKBgQDIoHNFajAZJ+benZlR7zYL1vt61z4BM2/J\nDUBsYm9U5VqUCGJ+jtIv18KSxZzwk2nRxc8JQ8eLtXe4hFc8+/6pSxi0nCqs2nyY\nOxgbt9J+rndnzF5Ac1koBfxBxWeDAYfV7O16BhrUt8+gB8xzLC66Xn8mrXgufFnc\n3jYwzdw1DwKBgQC5KP6f0LT8Re1tw3tRigLIYeRqxvEI2NFkqA+Rfhy/5dYcwyoB\n3kaUxxXTV98JIhab2AsSuQDRUtBdm36++rK71PKmPRUUwou/IP5yyzJIVRp0+0vY\n1bM5kcRASsQbNRtEk5N3/8li1saFo1m61EjEBriWOX+xsvWNlAAZ3AgtXwKBgQCY\nrMmr7Hg33I6roIE5wfF+JxbvT3dnEI6kEIqTMIGKuJMqjgruRp+bOvVeHjYlOflQ\nYtkAMu1a2zkFWOjOhvIwQO7HGwS6z/X7HxVkmon8T6acfgDHyT/y3kMuhhwUrQiC\n+q9pqdWnRU4ieWzTxK62swzOETqhHY6BLzVMBIzsbwKBgEtxhRbUk+hiSvARP8eF\n5OpOAQdcsu+vqs/6az3Wt24vywOBn3Cn1rgFH0Ll2axseyKVz8KdFh8B3fVPu9uc\nYoeM192T06GUF4smxAj50/w3bsgPMhQ/jSl51aA9m9LVxAw+u0dRmeHBzrcvxJmo\nxAr1V+eDc6+dIOcc45kpxHJZ\n-----END PRIVATE KEY-----\n",
+  "client_email": "ifournight-service@instagram-clone-162402.iam.gserviceaccount.com",
+  "client_id": "114725322107074588827",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ifournight-service%40instagram-clone-162402.iam.gserviceaccount.com"
+}
