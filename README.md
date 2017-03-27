@@ -53,15 +53,15 @@ Feature list change rapidly, see the lasted at [this card](https://trello.com/c/
 #### 进一步熟悉Rails
 这是我第一次独立用Rails写项目，之前跟着教程写过两个Rails的项目，Rails Guide也都看过一遍了，但是这个项目还是让我学到了很多，对Rails有了进一步的熟悉，下面列举一些细节：
 
-	* 简单Relation的ActiveModel设计(User, Post, Comment, Like, Follow)
-	* 对Rails的MVC有了进一步的理解
-	* Rails routes进一步学习，为了模拟Instagram的路由，写了很多非RESTFul风格的自定义routes
-	* 对于要求用户登录这样的权限验证，利用Controller的Callback的继承机制来制定白名单
-	* 	对Rails自带的helper运用更加娴熟，比如各种path_helper, view_helper (form_for, form_tag)
-	* 即使我的User, Post引入Devise，CarrierWave的情况下，还是可以写Seed Data
-	* 对Rails的生态圈进一步熟悉，知道了responder, http_accept_language, I18n等插件或Gem。
-	* Rails安全相关入门
-	* 学会了如何做国际化和本地化
+* 简单Relation的ActiveModel设计(User, Post, Comment, Like, Follow)
+* 对Rails的MVC有了进一步的理解
+* Rails routes进一步学习，为了模拟Instagram的路由，写了很多非RESTFul风格的自定义routes
+* 对于要求用户登录这样的权限验证，利用Controller的Callback的继承机制来制定白名单
+* 	对Rails自带的helper运用更加娴熟，比如各种path_helper, view_helper (form_for, form_tag)
+* 即使我的User, Post引入Devise，CarrierWave的情况下，还是可以写Seed Data
+* 对Rails的生态圈进一步熟悉，知道了responder, http_accept_language, I18n等插件或Gem。
+* Rails安全相关入门
+* 学会了如何做国际化和本地化
 
 #### 引入Rails插件
 特别要提一下的是这次的Gem中用到了Devise。之前跟这[RailsTutorial](https://www.railstutorial.org)是实现过简易用户Authentic的，对其背后的一些安全问题有了一定的了解。这次在阅读Rails安全指南后，觉得就用户Authentic来说，需要涵盖到很多问题。
@@ -69,11 +69,11 @@ Feature list change rapidly, see the lasted at [this card](https://trello.com/c/
 秉承着DRY原则，也因为是带着尽量按照一个成熟的商业项目来打磨这一目标，选择了引入Devise。
 
 第一次使用了比较大型的Rails插件，在这个过程中，学习到了：
-	* Devise是如何通过写`-able`的module的方式把各种功能引入到ActiveRecord里来的。
-	* 文档再齐全，不如看源码和调试：
-		* 对debugger越来越熟悉：`next`, `up`, `down`, `continue`, `break`，通过阅读源码来学习
-		* 发现Devise的Test就是很好的文档，认同Test As Documents的观点，这一点在现在看的[Testing rails](http://testingrailsbook.com)也得到了证实。
-		* 学习了不依赖fixtures，通过写Generator来动态生成测试数据。
+* Devise是如何通过写`-able`的module的方式把各种功能引入到ActiveRecord里来的。
+* 文档再齐全，不如看源码和调试：
+	* 对debugger越来越熟悉：`next`, `up`, `down`, `continue`, `break`，通过阅读源码来学习
+	* 发现Devise的Test就是很好的文档，认同Test As Documents的观点，这一点在现在看的[Testing rails](http://testingrailsbook.com)也得到了证实。
+	* 学习了不依赖fixtures，通过写Generator来动态生成测试数据。
 
 ### How to write CSS in 2017
 
